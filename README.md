@@ -17,7 +17,7 @@
 - 添加微信 -> 确认时间与价格 -> 进行咨询
 - 形式：在线语音
 
-img/PaymentCode.jpeg
+![Pay](img/PaymentCode.jpeg)         ![test](img/weixin.png)
 
 **微信预约 wechat: Chikkou** 
 <br>
