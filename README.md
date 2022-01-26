@@ -2,7 +2,7 @@
 推出独家 **高级开发技术思维导图**，有需求者 欢迎订购
 - 微信扫码支付（支付时 **【备注 📮：邮箱！邮箱！邮箱！】**） -> 每晚批量发送至备注邮箱
 
-![Pay](img/PaymentCode.png) 
+<img src="img/PaymentCode.png" alt="Pay" align="middle" width="200px"> 
 
 ###  🌟 有偿提供互联网开发工程师 模拟面试 & 职业咨询
 - 校招 (P5)  15K-22K <br>
@@ -20,5 +20,5 @@
 
 ### 🌟 添加微信
 
-<img src="img/weChat.png" alt="image" align="middle" width="100px"> 
+<img src="img/weChat.png" alt="weChat" align="middle" width="200px"> 
 
