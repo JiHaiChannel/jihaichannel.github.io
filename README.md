@@ -1,9 +1,9 @@
-### ️独家资料
+### ️🌟 独家资料
 支付时 **【备注 留下📮：邮箱！邮箱！邮箱！】** 每晚批量发送至备注邮箱
 
-1. 推出独家 **高级开发技术思维导图**，有需求者 欢迎订购
+推出独家 **高级开发技术思维导图**，有需求者 欢迎订购
 
-###  有偿提供互联网开发工程师 模拟面试&职业咨询
+###  🌟 偿提供互联网开发工程师 模拟面试&职业咨询
 - 校招 (P5)  15K-22K <br>
 - 高级开发工程师 (P6) 25K-35K <br>
 - 技术专家（P7）30K-50K <br>
@@ -17,9 +17,9 @@
 - 添加微信 -> 确认时间与价格 -> 进行咨询
 - 形式：在线语音
 
-![Pay](img/PaymentCode.jpeg)         ![test](img/weixin.png)
 
-**微信预约 wechat: Chikkou** 
-<br>
-<img src="https://user-images.githubusercontent.com/98442707/151107669-50395365-5cc8-40ed-8b48-c4ce6320b0c9.png" alt="image" width="200px">
+### Call Me
+| 微信二维码  |  支付码    |
+|:--------:| :-------------:|
+| <img src="https://user-images.githubusercontent.com/98442707/151107669-50395365-5cc8-40ed-8b48-c4ce6320b0c9.png" alt="image" width="200px">  | ![Pay](img/PaymentCode.jpeg)  |
 
