@@ -5,8 +5,6 @@
 
 ![Pay](img/PaymentCode.png)
 
-<img src="img/PaymentCode.png" alt="Pay" align="middle" width="200px"> 
-
 ###  🌟 有偿提供互联网开发工程师 模拟面试 & 职业咨询
 - 校招 (P5)  15K-22K <br>
 - 高级开发工程师 (P6) 25K-35K <br>
@@ -22,8 +20,4 @@
 
 
 ### 🌟 添加微信
-![weChat](img/weChat.png)
-
-
-<img src="img/weChat.png" alt="weChat" align="middle" width="200px"> 
-
+![weChat](img/weChat.jpeg)
