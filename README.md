@@ -3,7 +3,7 @@
 - 微信扫码支付（支付时 **【备注 📮：邮箱！邮箱！邮箱！】**） 
 - 最迟当晚发送至📮
 
-![Pay](img/PaymentCode.png)
+![Pay](img/PaymentCode.jpeg)
 
 ###  🌟 有偿提供互联网开发工程师 模拟面试 & 职业咨询
 - 校招 (P5)  15K-22K <br>
