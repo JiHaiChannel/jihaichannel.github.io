@@ -1,6 +1,9 @@
 ### ️🌟 独家资料
 推出独家 **高级开发技术思维导图**，有需求者 欢迎订购
-- 微信扫码支付（支付时 **【备注 📮：邮箱！邮箱！邮箱！】**） -> 每晚批量发送至备注邮箱
+- 微信扫码支付（支付时 **【备注 📮：邮箱！邮箱！邮箱！】**） 
+- 最迟当晚发送至📮
+
+![Pay](img/PaymentCode.png)
 
 <img src="img/PaymentCode.png" alt="Pay" align="middle" width="200px"> 
 
@@ -19,6 +22,8 @@
 
 
 ### 🌟 添加微信
+![weChat](img/weChat.png)
+
 
 <img src="img/weChat.png" alt="weChat" align="middle" width="200px"> 
 
