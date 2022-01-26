@@ -18,5 +18,5 @@
 
 
 ### 🌟 联系 & 支付
-| <img src="https://user-images.githubusercontent.com/98442707/151107669-50395365-5cc8-40ed-8b48-c4ce6320b0c9.png" alt="image" width="200px">   ![Pay](img/PaymentCode.jpeg)  |
+<img src="https://user-images.githubusercontent.com/98442707/151107669-50395365-5cc8-40ed-8b48-c4ce6320b0c9.png" alt="image" width="200px">   ![Pay](img/PaymentCode.jpeg)  
 
