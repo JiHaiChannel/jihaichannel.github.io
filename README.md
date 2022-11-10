@@ -28,6 +28,7 @@
 ------
 🌟 扫码支付：<br>
 ![Pay](img/PaymentCode.jpeg)
+<img width="225" alt="image" src="https://user-images.githubusercontent.com/98442707/201079166-add4f328-3e26-4eb4-a71b-ca4f27a09b7a.png">
 
 🌟 联系方式： <br>
 ![weChat](img/weChat.jpeg)
