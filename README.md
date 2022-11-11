@@ -26,7 +26,7 @@
 - 在线语音
 
 ------
-🌟 扫码支付：<br>
+🌟 扫码支付[微信与支付宝两个渠道均可]：<br>
 ![Pay](img/PaymentCode.jpeg)
 <img width="220" alt="image" src="https://user-images.githubusercontent.com/98442707/201079853-2fa09c77-6a1a-4f7b-bbaa-6fa40c58c1f5.png">
 
