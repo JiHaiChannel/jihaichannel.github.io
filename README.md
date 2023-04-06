@@ -28,7 +28,7 @@
 添加微信 -> 确认时间与价格 -> 安排咨询
 
 ------
-🌟 扫码支付：<br>
+🌟 支付：<br>
 微信![Pay](img/PaymentCode.jpeg)
 <br>支付宝
 <img width="220" alt="image" src="https://user-images.githubusercontent.com/98442707/201079853-2fa09c77-6a1a-4f7b-bbaa-6fa40c58c1f5.png">
