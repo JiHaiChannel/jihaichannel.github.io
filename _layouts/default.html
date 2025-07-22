@@ -27,6 +27,89 @@
         --transition: all 0.3s ease;
       }
       
+      /* 模态框样式 */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .modal.show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 1;
+      }
+      
+      .modal-content {
+        background-color: #fff;
+        margin: auto;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        max-width: 400px;
+        width: 90%;
+        position: relative;
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+      }
+      
+      .modal.show .modal-content {
+        transform: scale(1);
+      }
+      
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      .modal-header h3 {
+        margin: 0;
+        color: var(--primary-color);
+        font-size: 22px;
+      }
+      
+      .close-modal {
+        font-size: 28px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        transition: color 0.2s;
+        line-height: 1;
+      }
+      
+      .close-modal:hover {
+        color: var(--primary-color);
+      }
+      
+      .modal-body {
+        text-align: center;
+      }
+      
+      .modal-body img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 15px;
+      }
+      
+      .modal-footer {
+        text-align: center;
+        margin-top: 15px;
+        color: #666;
+        font-size: 14px;
+      }
+      
       html {
         scroll-behavior: smooth; /* 添加平滑滚动效果 */
       }
@@ -918,10 +1001,60 @@
         </div>
       </section>
     </div>
+    
+    <!-- 微信二维码模态框 -->
+    <div id="wechatModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>添加微信联系</h3>
+          <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <img src="img/weChat.jpeg" alt="微信联系方式">
+          <p>扫描上方二维码添加微信</p>
+        </div>
+        <div class="modal-footer">
+          <p>添加后请注明咨询项目</p>
+        </div>
+      </div>
+    </div>
+    
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       // 添加深色模式切换功能
       document.addEventListener('DOMContentLoaded', function() {
+        // 微信二维码模态框功能
+        const modal = document.getElementById('wechatModal');
+        const closeModal = document.querySelector('.close-modal');
+        
+        // 关闭模态框
+        closeModal.addEventListener('click', function() {
+          modal.style.opacity = '0';
+          setTimeout(() => {
+            modal.classList.remove('show');
+          }, 300); // 等待过渡动画完成
+        });
+        
+        // 点击模态框背景也可关闭
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+              modal.classList.remove('show');
+            }, 300);
+          }
+        });
+        
+        // ESC键关闭模态框
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && modal.classList.contains('show')) {
+            modal.style.opacity = '0';
+            setTimeout(() => {
+              modal.classList.remove('show');
+            }, 300);
+          }
+        });
+        
         // 发送页面访问统计请求到bitfree.cn
         fetch('https://bitfree.cn/api/user/registerView', {
           method: 'POST',
@@ -939,44 +1072,20 @@
           console.error('记录页面访问失败:', error);
         });
         
-        // 为联系方式锚点链接添加平滑滚动和视觉反馈
+        // 为"立即预约"按钮添加点击事件，显示微信二维码模态框
         const serviceButtons = document.querySelectorAll('.service-button');
         serviceButtons.forEach(button => {
           button.addEventListener('click', function(e) {
-            // 获取目标锚点
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
+            e.preventDefault(); // 阻止默认的锚点跳转
             
-            if (targetElement) {
-              e.preventDefault(); // 阻止默认的锚点跳转
-              
-              // 添加闪烁效果突出显示联系方式部分
-              const highlightElement = function() {
-                targetElement.style.transition = 'background-color 0.5s ease';
-                targetElement.style.backgroundColor = 'rgba(52, 152, 219, 0.2)';
-                
-                setTimeout(() => {
-                  targetElement.style.backgroundColor = 'transparent';
-                  
-                  // 在动画完成后移除样式
-                  setTimeout(() => {
-                    targetElement.style.transition = '';
-                  }, 500);
-                }, 1000);
-              };
-              
-              // 平滑滚动到目标位置
-              const yOffset = -20; // 顶部偏移量
-              const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-              
-              window.scrollTo({
-                top: y,
-                behavior: 'smooth'
-              });
-              
-              // 滚动完成后应用高亮效果
-              setTimeout(highlightElement, 600);
-            }
+            // 显示微信二维码模态框
+            const modal = document.getElementById('wechatModal');
+            modal.classList.add('show');
+            
+            // 添加动画效果
+            setTimeout(() => {
+              modal.style.opacity = '1';
+            }, 10);
           });
         });
         
