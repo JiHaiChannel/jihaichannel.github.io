@@ -7,25 +7,368 @@
 
 {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     {% include head-custom.html %}
+    <style>
+      :root {
+        --primary-color: #2c3e50;
+        --accent-color: #3498db;
+        --light-bg: #f9f9f9;
+        --dark-text: #333;
+        --light-text: #f8f9fa;
+        --border-radius: 8px;
+        --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        --transition: all 0.3s ease;
+      }
+      
+      body {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+        color: var(--dark-text);
+        line-height: 1.6;
+        background-color: var(--light-bg);
+        margin: 0;
+        padding: 0;
+      }
+      
+      .wrapper {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+      }
+      
+      header {
+        position: sticky;
+        top: 0;
+        width: 280px;
+        padding: 35px 25px;
+        background: var(--primary-color);
+        color: var(--light-text);
+        border-right: 1px solid rgba(255,255,255,0.1);
+        height: 100vh;
+        overflow-y: auto;
+      }
+      
+      header h1 {
+        margin: 0 0 20px 0;
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: 0.5px;
+      }
+      
+      header h1 a {
+        color: white;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      
+      header h1 a:hover {
+        color: var(--accent-color);
+      }
+      
+      header img {
+        max-width: 100%;
+        border-radius: 50%;
+        display: block;
+        margin: 25px auto;
+        border: 3px solid rgba(255,255,255,0.2);
+        transition: var(--transition);
+        box-shadow: var(--box-shadow);
+      }
+      
+      header img:hover {
+        transform: scale(1.05);
+        border-color: var(--accent-color);
+      }
+      
+      header ul {
+        list-style: none;
+        padding: 0;
+        margin: 25px 0;
+      }
+      
+      header ul li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+      }
+      
+      header ul li a {
+        color: rgba(255,255,255,0.85);
+        text-decoration: none;
+        transition: var(--transition);
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+      }
+      
+      header ul li a:hover {
+        color: var(--accent-color);
+        transform: translateX(3px);
+      }
+      
+      header ul li a i {
+        margin-right: 10px;
+        font-size: 16px;
+      }
+      
+      section {
+        flex: 1;
+        padding: 40px;
+        background: white;
+        box-shadow: var(--box-shadow);
+        overflow-y: auto;
+        height: 100vh;
+      }
+      
+      .card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+      }
+      
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      }
+      
+      h2, h3 {
+        color: var(--primary-color);
+        margin-top: 0;
+        font-weight: 600;
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 8px;
+        display: inline-block;
+      }
+      
+      a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      
+      a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+      
+      .payment-methods {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      
+      .payment-method {
+        text-align: center;
+        width: 200px;
+      }
+      
+      .payment-method img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        transition: var(--transition);
+      }
+      
+      .payment-method img:hover {
+        transform: scale(1.05);
+      }
+      
+      .payment-method p {
+        margin-top: 10px;
+        font-weight: 500;
+      }
+      
+      .contact {
+        margin-top: 30px;
+      }
+      
+      .contact img {
+        max-width: 200px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+      
+      .separator {
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+        margin: 30px 0;
+      }
+      
+      .course-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        background: #f8f9fa;
+        transition: var(--transition);
+      }
+      
+      .course-item:hover {
+        background: #e9ecef;
+      }
+      
+      .course-icon {
+        margin-right: 15px;
+        font-size: 20px;
+        color: var(--accent-color);
+      }
+      
+      .course-info {
+        flex: 1;
+      }
+      
+      .course-price {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+      
+      .category-title {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        position: relative;
+        padding-left: 15px;
+      }
+      
+      .category-title:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        height: 20px;
+        width: 5px;
+        background: var(--accent-color);
+        border-radius: 3px;
+      }
+      
+      .service-box {
+        background: #f8f9fa;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      
+      .service-title {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+      
+      .service-steps {
+        padding-left: 20px;
+      }
+      
+      .service-steps li {
+        margin-bottom: 8px;
+      }
+      
+      .highlight-price {
+        color: #e74c3c;
+        font-size: 1.2em;
+      }
+      
+      .note {
+        font-style: italic;
+        color: #7f8c8d;
+        font-size: 0.9em;
+        margin-top: 5px;
+      }
+      
+      .badge {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: white;
+        font-size: 0.7em;
+        padding: 2px 8px;
+        border-radius: 12px;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+      
+      @media (max-width: 800px) {
+        .wrapper {
+          flex-direction: column;
+        }
+        
+        header {
+          width: 100%;
+          height: auto;
+          position: relative;
+          padding: 20px;
+        }
+        
+        section {
+          height: auto;
+          padding: 25px;
+        }
+        
+        .payment-methods {
+          justify-content: center;
+        }
+      }
+      
+      /* Dark mode toggle */
+      .theme-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+      
+      .theme-toggle:hover {
+        background: rgba(255,255,255,0.2);
+      }
+      
+      /* Animation */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      section {
+        animation: fadeIn 0.5s ease-out;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <header>
+        <button class="theme-toggle" id="theme-toggle" title="切换深色/浅色模式">
+          <i class="fas fa-moon"></i>
+        </button>
+        
         <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
         <p>{{ site.description | default: site.github.project_tagline }}</p>
         {% if site.logo %}
           <img src="{{site.logo | relative_url}}" alt="Logo" />
         {% endif %}
 
-        <b>
         <ul>
-          <li>B站主页： <a href="https://space.bilibili.com/1525355">极海Channel</a></li>
+          <li><a href="https://space.bilibili.com/1525355"><i class="fab fa-bilibili"></i> 极海Channel</a></li>
+          <li><a href="http://bitfree.cn"><i class="fas fa-globe"></i> bitfree开发者社区</a></li>
         </ul>
-        </b>
 
 <!--        {% if site.github.is_project_page %}-->
 <!--        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>-->
@@ -48,13 +391,71 @@
       {{ content }}
 
       </section>
-<!--      <footer>-->
-<!--        {% if site.github.is_project_page %}-->
-<!--        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>-->
-<!--        {% endif %}-->
-<!--        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>-->
-<!--      </footer>-->
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    <script>
+      // 添加深色模式切换功能
+      document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.getElementById('theme-toggle');
+        const icon = themeToggle.querySelector('i');
+        const root = document.documentElement;
+        
+        // 检查用户偏好
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // 应用主题
+        if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
+          enableDarkMode();
+        }
+        
+        themeToggle.addEventListener('click', function() {
+          if (root.classList.contains('dark-theme')) {
+            disableDarkMode();
+          } else {
+            enableDarkMode();
+          }
+        });
+        
+        function enableDarkMode() {
+          root.classList.add('dark-theme');
+          document.body.style.backgroundColor = '#1a1a1a';
+          document.body.style.color = '#e0e0e0';
+          document.querySelector('section').style.backgroundColor = '#2d2d2d';
+          document.querySelectorAll('.card, .course-item').forEach(el => {
+            el.style.backgroundColor = '#333';
+          });
+          document.querySelectorAll('h2, h3').forEach(el => {
+            el.style.color = '#e0e0e0';
+          });
+          icon.classList.replace('fa-moon', 'fa-sun');
+          localStorage.setItem('theme', 'dark');
+        }
+        
+        function disableDarkMode() {
+          root.classList.remove('dark-theme');
+          document.body.style.backgroundColor = 'var(--light-bg)';
+          document.body.style.color = 'var(--dark-text)';
+          document.querySelector('section').style.backgroundColor = 'white';
+          document.querySelectorAll('.card').forEach(el => {
+            el.style.backgroundColor = 'white';
+          });
+          document.querySelectorAll('.course-item').forEach(el => {
+            el.style.backgroundColor = '#f8f9fa';
+          });
+          document.querySelectorAll('h2, h3').forEach(el => {
+            el.style.color = 'var(--primary-color)';
+          });
+          icon.classList.replace('fa-sun', 'fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
+        
+        // 为每个课程项添加动画
+        const courseItems = document.querySelectorAll('.course-item');
+        courseItems.forEach((item, index) => {
+          item.style.animation = `fadeIn 0.3s ease-out ${index * 0.1}s both`;
+        });
+      });
+    </script>
   </body>
 </html>
