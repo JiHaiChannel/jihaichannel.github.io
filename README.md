@@ -19,6 +19,89 @@
         <span>立即访问</span>
         <i class="fas fa-arrow-right"></i>
       </a>
+        <p class="bitfree-note"><i class="fas fa-info-circle"></i> PC端访问体验更佳</p>
+
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="personal-services">
+  <div class="personal-services-header">
+    <div class="services-title-container">
+      <h2><i class="fas fa-user-cog"></i> 个性化服务</h2>
+      <span class="services-subtitle">一对一专业指导</span>
+    </div>
+    <div class="services-badge">限量预约</div>
+  </div>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-card-header">
+        <div class="service-icon">
+          <i class="fas fa-comments"></i>
+        </div>
+        <h3 class="service-name">模拟面试</h3>
+        <div class="service-tag">热门</div>
+      </div>
+      <div class="service-description">
+        <p>由行业专家模拟真实面试环境，针对性提供反馈与改进建议</p>
+      </div>
+      <div class="service-process">
+        <div class="process-step">
+          <span class="step-number">1</span>
+          <span class="step-text">添加微信</span>
+        </div>
+        <div class="process-step">
+          <span class="step-number">2</span>
+          <span class="step-text">确认时间与价格（按职级浮动）</span>
+        </div>
+        <div class="process-step">
+          <span class="step-number">3</span>
+          <span class="step-text">提供简历评估</span>
+        </div>
+        <div class="process-step">
+          <span class="step-number">4</span>
+          <span class="step-text">安排面试（60分钟）</span>
+        </div>
+        <div class="process-step">
+          <span class="step-number">5</span>
+          <span class="step-text">复盘与建议（30分钟）</span>
+        </div>
+      </div>
+      <div class="service-action">
+        <a href="#contact" class="service-button">立即预约</a>
+      </div>
+    </div>
+    
+    <div class="service-card">
+      <div class="service-card-header">
+        <div class="service-icon">
+          <i class="fas fa-route"></i>
+        </div>
+        <h3 class="service-name">职业咨询</h3>
+      </div>
+      <div class="service-description">
+        <p>深度分析职业现状，定制个人发展规划，助力突破职业瓶颈</p>
+      </div>
+      <div class="service-process">
+        <div class="process-step">
+          <span class="step-number">1</span>
+          <span class="step-text">添加微信</span>
+        </div>
+        <div class="process-step">
+          <span class="step-number">2</span>
+          <span class="step-text">确认时间与价格（按职级浮动）</span>
+        </div>
+        <div class="process-step">
+          <span class="step-number">3</span>
+          <span class="step-text">安排咨询（定制化解决方案）</span>
+        </div>
+      </div>
+      <div class="service-action">
+        <a href="#contact" class="service-button">立即预约</a>
+      </div>
     </div>
   </div>
 </div>
@@ -72,49 +155,7 @@
   <p><del>¥420</del> <strong class="highlight-price">¥298</strong></p>
 </div>
 
-<div class="separator"></div>
 
-<div class="category-title">
-  <h2>🔍 个性化服务</h2>
-</div>
-
-<div class="service-box">
-  <div class="service-title">模拟面试</div>
-  <ul class="service-steps">
-    <li>添加微信</li>
-    <li>确认时间与价格（按职级浮动）</li>
-    <li>提供简历评估</li>
-    <li>安排面试（60分钟）</li>
-    <li>复盘与建议（30分钟）</li>
-  </ul>
-</div>
-
-<div class="service-box">
-  <div class="service-title">职业咨询</div>
-  <ul class="service-steps">
-    <li>添加微信</li>
-    <li>确认时间与价格（按职级浮动）</li>
-    <li>安排咨询</li>
-  </ul>
-</div>
-
-<div class="separator"></div>
-
-<div class="category-title">
-  <h2>💳 支付方式</h2>
-  <p class="note">请务必备注邮箱，资料将在24小时内发送</p>
-</div>
-
-<div class="payment-methods">
-  <div class="payment-method">
-    <p>微信支付</p>
-    <img src="img/PaymentCode.jpeg" alt="微信支付码">
-  </div>
-  <div class="payment-method">
-    <p>支付宝</p>
-    <img width="220" alt="支付宝支付码" src="https://user-images.githubusercontent.com/98442707/201079853-2fa09c77-6a1a-4f7b-bbaa-6fa40c58c1f5.png">
-  </div>
-</div>
 
 <div class="separator"></div>
 
@@ -159,6 +200,26 @@
 </div>
 
 <div class="separator"></div>
+
+<div class="category-title">
+  <h2>💳 支付方式</h2>
+  <p class="note">请务必备注邮箱，资料将在24小时内发送</p>
+</div>
+
+<div class="payment-methods">
+  <div class="payment-method">
+    <p>微信支付</p>
+    <img src="img/PaymentCode.jpeg" alt="微信支付码">
+  </div>
+  <div class="payment-method">
+    <p>支付宝</p>
+    <img width="220" alt="支付宝支付码" src="https://user-images.githubusercontent.com/98442707/201079853-2fa09c77-6a1a-4f7b-bbaa-6fa40c58c1f5.png">
+  </div>
+</div>
+
+<div class="separator"></div>
+
+
 
 <div class="category-title">
   <h2>📱 联系方式</h2>

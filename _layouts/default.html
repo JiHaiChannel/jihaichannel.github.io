@@ -37,8 +37,9 @@
       }
       
       .wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
         display: flex;
         flex-direction: row;
         padding: 0;
@@ -174,6 +175,13 @@
         box-shadow: var(--box-shadow);
         overflow-y: auto;
         height: 100vh;
+        max-width: 100%;
+      }
+      
+      section .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
       }
       
       .card {
@@ -501,6 +509,222 @@
         animation: fadeInUp 0.8s ease-out;
       }
       
+      /* 个性化服务样式 */
+      .personal-services {
+        background: linear-gradient(135deg, #4b6cb7, #182848);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease-out;
+      }
+      
+      .personal-services:before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      
+      .personal-services:after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 160px;
+        height: 160px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      
+      .personal-services-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+      
+      .services-title-container {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .personal-services-header h2 {
+        color: white;
+        border-bottom: none;
+        margin: 0;
+        font-size: 28px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+      
+      .personal-services-header h2 i {
+        margin-right: 12px;
+        font-size: 24px;
+        color: #a3bffa;
+      }
+      
+      .services-subtitle {
+        margin-top: 5px;
+        font-size: 0.9em;
+        opacity: 0.8;
+      }
+      
+      .services-badge {
+        background: rgba(255,255,255,0.15);
+        color: white;
+        font-size: 0.8em;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(255,255,255,0.3);
+      }
+      
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+      
+      .service-card {
+        background: rgba(255,255,255,0.1);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,255,255,0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .service-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255,255,255,0.15);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      }
+      
+      .service-card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        position: relative;
+      }
+      
+      .service-icon {
+        width: 45px;
+        height: 45px;
+        background: rgba(255,255,255,0.15);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      }
+      
+      .service-icon i {
+        font-size: 20px;
+        color: #a3bffa;
+      }
+      
+      .service-name {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+      }
+      
+      .service-tag {
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #e74c3c;
+        color: white;
+        font-size: 0.7em;
+        padding: 3px 10px;
+        border-radius: 15px;
+        font-weight: 600;
+      }
+      
+      .service-description {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+        line-height: 1.5;
+        opacity: 0.9;
+      }
+      
+      .service-process {
+        margin-bottom: 20px;
+      }
+      
+      .process-step {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 8px 0;
+        border-bottom: 1px dashed rgba(255,255,255,0.1);
+      }
+      
+      .process-step:last-child {
+        border-bottom: none;
+      }
+      
+      .step-number {
+        width: 24px;
+        height: 24px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8em;
+        font-weight: 600;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+      
+      .step-text {
+        font-size: 0.9em;
+      }
+      
+      .service-action {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .service-button {
+        background: rgba(255,255,255,0.9);
+        color: #4b6cb7;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-align: center;
+        min-width: 140px;
+      }
+      
+      .service-button:hover {
+        transform: scale(1.05);
+        background: white;
+        color: #182848;
+        text-decoration: none;
+      }
+      
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -514,18 +738,43 @@
       
       /* Responsive adjustments */
       @media (max-width: 600px) {
-        .bitfree-header {
+        .bitfree-header, .personal-services-header {
           flex-direction: column;
           align-items: flex-start;
         }
         
-        .bitfree-badge {
+        .bitfree-badge, .services-badge {
           margin-top: 10px;
           align-self: flex-start;
         }
         
         .bitfree-content {
           flex-direction: column;
+        }
+        
+        section {
+          padding: 20px 15px;
+        }
+        
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .personal-services, .bitfree-showcase {
+          padding: 20px;
+        }
+        
+        .course-item {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .course-icon {
+          margin-bottom: 10px;
+        }
+        
+        .course-price {
+          margin-top: 10px;
         }
       }
       
@@ -543,11 +792,35 @@
         
         section {
           height: auto;
-          padding: 25px;
+          min-height: calc(100vh - 250px); /* 减去header的高度 */
         }
         
         .payment-methods {
           justify-content: center;
+        }
+      }
+      
+      @media (min-width: 801px) {
+        .wrapper {
+          min-height: 100vh;
+        }
+        
+        section {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+        }
+        
+        section .container {
+          flex: 1;
+          width: 100%;
+          max-width: 1200px;
+        }
+      }
+      
+      @media (min-width: 1600px) {
+        section .container {
+          max-width: 1400px;
         }
       }
       
@@ -625,9 +898,9 @@
         {% endif %}
       </header>
       <section>
-
-      {{ content }}
-
+        <div class="container">
+          {{ content }}
+        </div>
       </section>
     </div>
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
@@ -680,6 +953,24 @@
             bitfreeNavLink.style.background = 'linear-gradient(135deg, rgba(30, 60, 114, 0.4), rgba(42, 82, 152, 0.4))';
             bitfreeNavLink.style.borderLeft = '3px solid #2a5298';
           }
+          
+          // 调整个性化服务区块在深色模式下的样式
+          const personalServices = document.querySelector('.personal-services');
+          if (personalServices) {
+            personalServices.style.background = 'linear-gradient(135deg, #1a2980, #26d0ce)';
+            personalServices.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+          }
+          
+          // 调整服务卡片在深色模式下的样式
+          document.querySelectorAll('.service-card').forEach(card => {
+            card.style.background = 'rgba(255,255,255,0.08)';
+            card.style.borderColor = 'rgba(255,255,255,0.05)';
+          });
+          
+          document.querySelectorAll('.service-button').forEach(button => {
+            button.style.background = 'rgba(255,255,255,0.8)';
+            button.style.color = '#1a2980';
+          });
           
           icon.classList.replace('fa-moon', 'fa-sun');
           localStorage.setItem('theme', 'dark');
