@@ -1,6 +1,27 @@
-<div class="card">
-  <h2>💻 开发者资源</h2>
-  <p><a href="http://bitfree.cn" target="_blank">bitfree开发者社区</a> - 专业技术成长平台 <span class="badge">PC端推荐</span></p>
+<div class="bitfree-showcase">
+  <div class="bitfree-header">
+    <h2><i class="fas fa-rocket"></i> bitfree开发者社区</h2>
+    <span class="bitfree-badge">专业技术成长平台</span>
+  </div>
+  
+  <div class="bitfree-content">
+    <div class="bitfree-description">
+      <p>bitfree开发者社区是一个专注于高级技术人才成长的专业平台，提供：</p>
+      <ul class="bitfree-features">
+        <li><i class="fas fa-graduation-cap"></i> <strong>专业课程</strong> - 高级开发技术与架构设计</li>
+        <li><i class="fas fa-users"></i> <strong>社区交流</strong> - 连接一线技术专家与求职者</li>
+        <li><i class="fas fa-laptop-code"></i> <strong>实战项目</strong> - 提升简历含金量的真实项目经验</li>
+        <li><i class="fas fa-briefcase"></i> <strong>职业发展</strong> - 定制化职业规划与晋升指导</li>
+      </ul>
+    </div>
+    <div class="bitfree-action">
+      <a href="http://bitfree.cn" target="_blank" class="bitfree-button">
+        <span>立即访问</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+      <p class="bitfree-note"><i class="fas fa-info-circle"></i> PC端访问体验更佳</p>
+    </div>
+  </div>
 </div>
 
 <div class="separator"></div>

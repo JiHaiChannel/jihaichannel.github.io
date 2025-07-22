@@ -119,6 +119,54 @@
         font-size: 16px;
       }
       
+      /* 侧边栏bitfree链接样式 */
+      .bitfree-nav-item {
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+      
+      .bitfree-nav-link {
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(44, 62, 80, 0.2));
+        padding: 10px 15px;
+        border-radius: 30px;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border-left: 3px solid var(--accent-color);
+      }
+      
+      .bitfree-nav-link:hover {
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(44, 62, 80, 0.3));
+        transform: translateX(3px);
+      }
+      
+      .bitfree-nav-link i {
+        background: rgba(255,255,255,0.15);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 10px;
+        color: var(--accent-color);
+      }
+      
+      .nav-highlight {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--accent-color);
+        color: white;
+        font-size: 0.65em;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-weight: 600;
+      }
+      
       section {
         flex: 1;
         padding: 40px;
@@ -297,6 +345,190 @@
         vertical-align: middle;
       }
       
+      /* Bitfree Showcase Styles */
+      .bitfree-showcase {
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      
+      .bitfree-showcase:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+      }
+      
+      .bitfree-showcase:before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(rgba(255,255,255,0.1), transparent 70%);
+        transform: rotate(30deg);
+        pointer-events: none;
+      }
+      
+      .bitfree-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      
+      .bitfree-header h2 {
+        color: white;
+        border-bottom: none;
+        margin: 0;
+        font-size: 28px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+      }
+      
+      .bitfree-header h2 i {
+        margin-right: 12px;
+        font-size: 24px;
+        background: rgba(255,255,255,0.2);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      
+      .bitfree-badge {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        font-size: 0.8em;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: 500;
+      }
+      
+      .bitfree-content {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        gap: 30px;
+      }
+      
+      .bitfree-description {
+        flex: 2;
+        min-width: 300px;
+      }
+      
+      .bitfree-description p {
+        font-size: 1.05em;
+        margin-top: 0;
+      }
+      
+      .bitfree-features {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0 0 0;
+      }
+      
+      .bitfree-features li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .bitfree-features li i {
+        margin-right: 10px;
+        background: rgba(255,255,255,0.15);
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+      
+      .bitfree-action {
+        flex: 1;
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .bitfree-button {
+        background: white;
+        color: var(--primary-color);
+        padding: 12px 25px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 15px;
+      }
+      
+      .bitfree-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        color: var(--accent-color);
+        text-decoration: none;
+      }
+      
+      .bitfree-button span {
+        margin-right: 8px;
+      }
+      
+      .bitfree-note {
+        font-size: 0.85em;
+        opacity: 0.8;
+        margin: 5px 0 0 0;
+      }
+      
+      /* Animation for bitfree section */
+      .bitfree-showcase {
+        animation: fadeInUp 0.8s ease-out;
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .bitfree-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .bitfree-badge {
+          margin-top: 10px;
+          align-self: flex-start;
+        }
+        
+        .bitfree-content {
+          flex-direction: column;
+        }
+      }
+      
       @media (max-width: 800px) {
         .wrapper {
           flex-direction: column;
@@ -367,7 +599,13 @@
 
         <ul>
           <li><a href="https://space.bilibili.com/1525355"><i class="fab fa-bilibili"></i> 极海Channel</a></li>
-          <li><a href="http://bitfree.cn"><i class="fas fa-globe"></i> bitfree开发者社区</a></li>
+          <li class="bitfree-nav-item">
+            <a href="http://bitfree.cn" class="bitfree-nav-link">
+              <i class="fas fa-rocket"></i> 
+              <span>bitfree开发者社区</span>
+              <span class="nav-highlight">推荐</span>
+            </a>
+          </li>
         </ul>
 
 <!--        {% if site.github.is_project_page %}-->
@@ -428,6 +666,21 @@
           document.querySelectorAll('h2, h3').forEach(el => {
             el.style.color = '#e0e0e0';
           });
+          
+          // 调整bitfree区块在深色模式下的样式
+          const bitfreeShowcase = document.querySelector('.bitfree-showcase');
+          if (bitfreeShowcase) {
+            bitfreeShowcase.style.background = 'linear-gradient(135deg, #1e3c72, #2a5298)';
+            bitfreeShowcase.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+          }
+          
+          // 调整bitfree导航项在深色模式下的样式
+          const bitfreeNavLink = document.querySelector('.bitfree-nav-link');
+          if (bitfreeNavLink) {
+            bitfreeNavLink.style.background = 'linear-gradient(135deg, rgba(30, 60, 114, 0.4), rgba(42, 82, 152, 0.4))';
+            bitfreeNavLink.style.borderLeft = '3px solid #2a5298';
+          }
+          
           icon.classList.replace('fa-moon', 'fa-sun');
           localStorage.setItem('theme', 'dark');
         }
