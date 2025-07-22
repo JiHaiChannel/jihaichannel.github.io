@@ -27,6 +27,10 @@
         --transition: all 0.3s ease;
       }
       
+      html {
+        scroll-behavior: smooth; /* 添加平滑滚动效果 */
+      }
+      
       body {
         font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
         color: var(--dark-text);
@@ -725,6 +729,17 @@
         text-decoration: none;
       }
       
+      /* 点击预约按钮时的动画效果 */
+      .service-button:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+      }
+      
+      /* 锚点链接的偏移，解决固定头部遮挡问题 */
+      #contact {
+        scroll-margin-top: 20px; /* 确保滚动到锚点时有足够的顶部间距 */
+      }
+      
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -907,6 +922,64 @@
     <script>
       // 添加深色模式切换功能
       document.addEventListener('DOMContentLoaded', function() {
+        // 发送页面访问统计请求到bitfree.cn
+        fetch('https://bitfree.cn/api/user/registerView', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ origin: 'githubPage' }),
+        })
+        .then(response => {
+          if (response.ok) {
+            console.log('页面访问已记录');
+          }
+        })
+        .catch(error => {
+          console.error('记录页面访问失败:', error);
+        });
+        
+        // 为联系方式锚点链接添加平滑滚动和视觉反馈
+        const serviceButtons = document.querySelectorAll('.service-button');
+        serviceButtons.forEach(button => {
+          button.addEventListener('click', function(e) {
+            // 获取目标锚点
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              e.preventDefault(); // 阻止默认的锚点跳转
+              
+              // 添加闪烁效果突出显示联系方式部分
+              const highlightElement = function() {
+                targetElement.style.transition = 'background-color 0.5s ease';
+                targetElement.style.backgroundColor = 'rgba(52, 152, 219, 0.2)';
+                
+                setTimeout(() => {
+                  targetElement.style.backgroundColor = 'transparent';
+                  
+                  // 在动画完成后移除样式
+                  setTimeout(() => {
+                    targetElement.style.transition = '';
+                  }, 500);
+                }, 1000);
+              };
+              
+              // 平滑滚动到目标位置
+              const yOffset = -20; // 顶部偏移量
+              const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              
+              window.scrollTo({
+                top: y,
+                behavior: 'smooth'
+              });
+              
+              // 滚动完成后应用高亮效果
+              setTimeout(highlightElement, 600);
+            }
+          });
+        });
+        
         const themeToggle = document.getElementById('theme-toggle');
         const icon = themeToggle.querySelector('i');
         const root = document.documentElement;

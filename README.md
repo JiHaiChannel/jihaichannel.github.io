@@ -221,7 +221,7 @@
 
 
 
-<div class="category-title">
+<div id="contact" class="category-title">
   <h2>📱 联系方式</h2>
 </div>
 
