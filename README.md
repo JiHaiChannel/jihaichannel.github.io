@@ -5,47 +5,6 @@
 
 <div class="separator"></div>
 
-<div class="category-title">
-  <h2>📝 面试资源</h2>
-</div>
-
-<div class="course-item">
-  <div class="course-icon"><i class="fas fa-video"></i></div>
-  <div class="course-info">
-    <a href="https://www.bilibili.com/video/BV1gh4y1b735/" target="_blank">2023年7月面试完整版</a>
-    <p><small>最新面试技巧与实战演练 (bitfree社区内免费观看)</small></p>
-  </div>
-  <div class="course-price">¥48</div>
-</div>
-
-<div class="course-item">
-  <div class="course-icon"><i class="fas fa-file-alt"></i></div>
-  <div class="course-info">
-    <a href="https://www.bilibili.com/video/BV1gh4y1b735/" target="_blank">2023年5月面试解析</a>
-    <p><small>深入剖析面试要点与应对策略</small></p>
-  </div>
-  <div class="course-price">¥38</div>
-</div>
-
-<div class="course-item">
-  <div class="course-icon"><i class="fas fa-video"></i></div>
-  <div class="course-info">
-    <a href="https://www.bilibili.com/video/BV13v4y1W7Dg/" target="_blank">2023年4月面试完整视频</a>
-    <p><small>全流程面试实录</small></p>
-  </div>
-  <div class="course-price">¥42</div>
-</div>
-
-<div class="course-item">
-  <div class="course-icon"><i class="fas fa-award"></i></div>
-  <div class="course-info">
-    <a href="https://www.bilibili.com/video/BV13v4y1W7Dg/" target="_blank">2023年4月面试完整视频 + 解析</a>
-    <p><small>面试实录 + 专业点评</small></p>
-  </div>
-  <div class="course-price">¥99</div>
-</div>
-
-<div class="separator"></div>
 
 <div class="category-title">
   <h2>📚 高级开发资料</h2>
@@ -135,6 +94,48 @@
     <p>支付宝</p>
     <img width="220" alt="支付宝支付码" src="https://user-images.githubusercontent.com/98442707/201079853-2fa09c77-6a1a-4f7b-bbaa-6fa40c58c1f5.png">
   </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="category-title">
+  <h2>📝 面试资源</h2>
+</div>
+
+<div class="course-item">
+  <div class="course-icon"><i class="fas fa-video"></i></div>
+  <div class="course-info">
+    <a href="https://www.bilibili.com/video/BV1gh4y1b735/" target="_blank">2023年7月面试完整版</a>
+    <p><small>最新面试技巧与实战演练 (bitfree社区内免费观看)</small></p>
+  </div>
+  <div class="course-price">¥48</div>
+</div>
+
+<div class="course-item">
+  <div class="course-icon"><i class="fas fa-file-alt"></i></div>
+  <div class="course-info">
+    <a href="https://www.bilibili.com/video/BV1gh4y1b735/" target="_blank">2023年5月面试解析</a>
+    <p><small>深入剖析面试要点与应对策略</small></p>
+  </div>
+  <div class="course-price">¥38</div>
+</div>
+
+<div class="course-item">
+  <div class="course-icon"><i class="fas fa-video"></i></div>
+  <div class="course-info">
+    <a href="https://www.bilibili.com/video/BV13v4y1W7Dg/" target="_blank">2023年4月面试完整视频</a>
+    <p><small>全流程面试实录</small></p>
+  </div>
+  <div class="course-price">¥42</div>
+</div>
+
+<div class="course-item">
+  <div class="course-icon"><i class="fas fa-award"></i></div>
+  <div class="course-info">
+    <a href="https://www.bilibili.com/video/BV13v4y1W7Dg/" target="_blank">2023年4月面试完整视频 + 解析</a>
+    <p><small>面试实录 + 专业点评</small></p>
+  </div>
+  <div class="course-price">¥99</div>
 </div>
 
 <div class="separator"></div>
