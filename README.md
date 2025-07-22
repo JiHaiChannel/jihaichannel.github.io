@@ -55,7 +55,7 @@
         </div>
         <div class="process-step">
           <span class="step-number">2</span>
-          <span class="step-text">确认时间与价格（按职级浮动）</span>
+          <span class="step-text">确认时间与价格</span>
         </div>
         <div class="process-step">
           <span class="step-number">3</span>
@@ -92,11 +92,11 @@
         </div>
         <div class="process-step">
           <span class="step-number">2</span>
-          <span class="step-text">确认时间与价格（按职级浮动）</span>
+          <span class="step-text">确认时间与价格</span>
         </div>
         <div class="process-step">
           <span class="step-number">3</span>
-          <span class="step-text">安排咨询（定制化解决方案）</span>
+          <span class="step-text">安排咨询，定制化解决方案</span>
         </div>
       </div>
       <div class="service-action">
