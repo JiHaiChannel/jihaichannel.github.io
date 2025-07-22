@@ -834,6 +834,15 @@
         }
       }
       
+      /* 确保移动端没有多余的边距 */
+      body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+      }
+      
       /* Responsive adjustments */
       @media (max-width: 600px) {
         .bitfree-header, .personal-services-header {
@@ -879,13 +888,18 @@
       @media (max-width: 800px) {
         .wrapper {
           flex-direction: column;
+          width: 100%;
+          max-width: 100%;
+          overflow-x: hidden;
         }
         
         header {
           width: 100%;
+          box-sizing: border-box;
           height: auto;
           position: relative;
           padding: 15px;
+          margin: 0;
         }
         
         header img {
@@ -926,6 +940,17 @@
           height: auto;
           min-height: calc(100vh - 180px); /* 减小header的高度影响 */
           padding: 20px 15px;
+          width: 100%;
+          box-sizing: border-box;
+          margin: 0;
+          max-width: 100%;
+        }
+        
+        .container {
+          width: 100%;
+          max-width: 100%;
+          box-sizing: border-box;
+          padding: 0;
         }
         
         .payment-methods {
