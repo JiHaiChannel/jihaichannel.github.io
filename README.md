@@ -19,7 +19,6 @@
         <span>立即访问</span>
         <i class="fas fa-arrow-right"></i>
       </a>
-      <p class="bitfree-note"><i class="fas fa-info-circle"></i> PC端访问体验更佳</p>
     </div>
   </div>
 </div>
