@@ -885,16 +885,59 @@
           width: 100%;
           height: auto;
           position: relative;
-          padding: 20px;
+          padding: 15px;
+        }
+        
+        header img {
+          width: 80px;
+          height: 80px;
+          margin: 10px auto;
+        }
+        
+        header h1 {
+          font-size: 20px;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+        
+        header p {
+          text-align: center;
+          margin: 5px 0;
+        }
+        
+        header ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin: 10px 0;
+          gap: 10px;
+        }
+        
+        header ul li {
+          margin: 0;
+        }
+        
+        header .bitfree-nav-item {
+          margin: 5px 0;
+          width: 100%;
         }
         
         section {
           height: auto;
-          min-height: calc(100vh - 250px); /* 减去header的高度 */
+          min-height: calc(100vh - 180px); /* 减小header的高度影响 */
+          padding: 20px 15px;
         }
         
         .payment-methods {
           justify-content: center;
+        }
+        
+        /* 调整主题切换按钮位置 */
+        .theme-toggle {
+          top: 10px;
+          right: 10px;
+          width: 32px;
+          height: 32px;
         }
       }
       
