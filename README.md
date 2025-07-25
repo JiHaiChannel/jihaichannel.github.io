@@ -46,7 +46,7 @@
         <div class="service-tag">热门</div>
       </div>
       <div class="service-description">
-        <p>由行业专家模拟真实面试环境，针对性提供反馈与改进建议</p>
+        <p>由极海本人真实面试环境，针对性提供反馈与改进建议</p>
       </div>
       <div class="service-process">
         <div class="process-step">
