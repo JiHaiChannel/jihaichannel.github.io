@@ -105,14 +105,3 @@
     </div>
   </div>
 </div>
-
-<div class="separator"></div>
-
-
-<div id="contact" class="category-title">
-  <h2>📱 联系方式</h2>
-</div>
-
-<div class="contact">
-  <img src="img/weChat.jpeg" alt="微信联系方式">
-</div>
