@@ -1406,7 +1406,11 @@
                 body: JSON.stringify(formData)
               });
 
-              const data = await response.json();
+              if (! res.ok) {
+                throw new Error('网络响应错误');
+              }
+
+              const data = await res.json()
 
               if (data.code == 200) {
                 alert('提交成功！我们会尽快与您联系');
