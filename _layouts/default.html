@@ -1138,20 +1138,7 @@
       </section>
     </div>
     
-    <!-- 微信二维码模态框 -->
-    <div id="wechatModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>添加微信联系</h3>
-          <span class="close-modal">&times;</span>
-        </div>
-        微信号：Chikkou
-        <div class="modal-footer">
-          <p>添加请注明面试或咨询</p>
-        </div>
-      </div>
-    </div>
-    
+
     <!-- 联系表单模态框 -->
     <div id="contactFormModal" class="modal">
       <div class="modal-content">
@@ -1187,7 +1174,6 @@
       // 添加深色模式切换功能
       document.addEventListener('DOMContentLoaded', function() {
         // 微信二维码模态框功能
-        const modal = document.getElementById('wechatModal');
         const closeModal = document.querySelector('.close-modal');
         
         // 关闭模态框
@@ -1198,15 +1184,6 @@
           }, 300); // 等待过渡动画完成
         });
         
-        // 点击模态框背景也可关闭
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) {
-            modal.style.opacity = '0';
-            setTimeout(() => {
-              modal.classList.remove('show');
-            }, 300);
-          }
-        });
         
         // ESC键关闭模态框
         document.addEventListener('keydown', function(e) {
