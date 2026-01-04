@@ -1406,10 +1406,6 @@
                 body: JSON.stringify(formData)
               });
 
-              if (! res.ok) {
-                throw new Error('网络响应错误');
-              }
-
               const data = await res.json()
 
               if (data.code == 200) {
