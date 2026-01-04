@@ -823,6 +823,52 @@
         transform: scale(0.95);
         transition: transform 0.1s;
       }
+
+      /* 表单样式 */
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--primary-color);
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: var(--border-radius);
+        font-size: 16px;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+      }
+
+      .submit-btn {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: var(--border-radius);
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        width: 100%;
+        transition: var(--transition);
+      }
+
+      .submit-btn:hover {
+        background-color: #2980b9;
+      }
       
       /* 锚点链接的偏移，解决固定头部遮挡问题 */
       #contact {
@@ -1106,6 +1152,40 @@
       </div>
     </div>
     
+    <!-- 联系表单模态框 -->
+    <div id="contactFormModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>联系我们</h3>
+          <span class="close-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="contactName">联系方式</label>
+              <input type="text" id="contactName" name="name" required placeholder="请输入您的姓名或电话">
+            </div>
+            <div class="form-group">
+              <label for="contactWechat">微信号</label>
+              <input type="text" id="contactWechat" name="wechat" required placeholder="请输入您的微信">
+            </div>
+            <div class="form-group">
+              <label for="contactType">咨询类型</label>
+              <select id="contactType" name="type" required>
+                <option value="">请选择咨询类型</option>
+                <option value="mock_interview">模拟面试+复盘</option>
+                <option value="career_consulting">职业咨询</option>
+                <option value="technical_guidance">技术指导</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="submit-btn">提交</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       // 添加深色模式切换功能
@@ -1159,14 +1239,14 @@
           console.error('记录页面访问失败:', error);
         });
         
-        // 为"立即预约"按钮添加点击事件，显示微信二维码模态框
+        // 为"立即预约"按钮添加点击事件，显示联系表单模态框
         const serviceButtons = document.querySelectorAll('.service-button');
         serviceButtons.forEach(button => {
           button.addEventListener('click', function(e) {
             e.preventDefault(); // 阻止默认的锚点跳转
             
-            // 显示微信二维码模态框
-            const modal = document.getElementById('wechatModal');
+            // 显示联系表单模态框
+            const modal = document.getElementById('contactFormModal');
             modal.classList.add('show');
             
             // 添加动画效果
@@ -1261,6 +1341,51 @@
           });
           icon.classList.replace('fa-sun', 'fa-moon');
           localStorage.setItem('theme', 'light');
+        }
+
+        // 表单提交处理
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+          contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+              name: document.getElementById('contactName').value,
+              wechat: document.getElementById('contactWechat').value,
+              type: document.getElementById('contactType').value
+            };
+            
+            // 表单验证
+            if (!formData.name || !formData.wechat || !formData.type) {
+              alert('请填写所有必填字段');
+              return;
+            }
+            
+            try {
+              const response = await fetch('https://bitfree.cn/api/message/contact', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+              });
+              
+              if (response.ok) {
+                alert('提交成功！我们会尽快与您联系');
+                contactForm.reset();
+                const modal = document.getElementById('contactFormModal');
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                  modal.classList.remove('show');
+                }, 300);
+              } else {
+                throw new Error('提交失败');
+              }
+            } catch (error) {
+              console.error('提交出错:', error);
+              alert('提交失败，请稍后再试');
+            }
+          });
         }
         
         // 为每个课程项添加动画
