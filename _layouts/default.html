@@ -1406,9 +1406,9 @@
                 body: JSON.stringify(formData)
               });
 
-              console.log(response.json())
+              const data = await response.json();
 
-              if (response.json().code == 200) {
+              if (data.code == 200) {
                 alert('提交成功！我们会尽快与您联系');
                 contactForm.reset();
                 contactFormModal.style.opacity = '0';
@@ -1416,7 +1416,7 @@
                   contactFormModal.classList.remove('show');
                 }, 300);
               } else {
-                alert(response.json().message);
+                alert(data.message);
               }
             } catch (error) {
               console.error('提交出错:', error);
