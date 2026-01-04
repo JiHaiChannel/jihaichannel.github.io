@@ -17,14 +17,55 @@
     {% include head-custom.html %}
     <style>
       :root {
-        --primary-color: #2c3e50;
-        --accent-color: #3498db;
-        --light-bg: #f9f9f9;
-        --dark-text: #333;
-        --light-text: #f8f9fa;
-        --border-radius: 8px;
-        --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        --transition: all 0.3s ease;
+        /* 深色主题配色 */
+        --bg-primary: #0a0e27;
+        --bg-secondary: #111630;
+        --bg-card: rgba(23, 30, 60, 0.6);
+        --bg-card-hover: rgba(30, 40, 75, 0.7);
+
+        /* 文字颜色 */
+        --text-primary: #e8eaed;
+        --text-secondary: #9aa0b8;
+        --text-muted: #6a7088;
+
+        /* 科技感渐变色 */
+        --accent-cyan: #00f5ff;
+        --accent-blue: #0066ff;
+        --accent-purple: #8b5cf6;
+        --accent-pink: #ec4899;
+
+        /* 渐变背景 */
+        --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-tech: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0a0e27 100%);
+        --gradient-glow: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(139, 92, 246, 0.1));
+
+        /* 光晕效果 */
+        --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3);
+        --glow-purple: 0 0 20px rgba(139, 92, 246, 0.3);
+
+        /* 其他变量 */
+        --border-radius: 12px;
+        --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --border-glow: 1px solid rgba(0, 245, 255, 0.15);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.7;
+        overflow-x: hidden;
       }
       
       /* 模态框样式 */
@@ -37,92 +78,84 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgba(0,0,0,0.7);
+        background-color: rgba(10, 14, 39, 0.9);
         opacity: 0;
         transition: opacity 0.3s ease;
+        backdrop-filter: blur(10px);
       }
-      
+
       .modal.show {
         display: flex;
         justify-content: center;
         align-items: center;
         opacity: 1;
       }
-      
+
       .modal-content {
-        background-color: #fff;
+        background: var(--bg-card);
+        backdrop-filter: blur(20px);
+        border: var(--border-glow);
         margin: auto;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        padding: 30px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--glow-cyan), var(--box-shadow);
         max-width: 400px;
         width: 90%;
         position: relative;
-        transform: scale(0.8);
+        transform: scale(0.9);
         transition: transform 0.3s ease;
       }
-      
+
       .modal.show .modal-content {
         transform: scale(1);
       }
-      
+
       .modal-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
       }
-      
+
       .modal-header h3 {
         margin: 0;
-        color: var(--primary-color);
+        color: var(--text-primary);
         font-size: 22px;
+        font-weight: 600;
       }
-      
+
       .close-modal {
-        font-size: 28px;
+        font-size: 24px;
         font-weight: bold;
-        color: #aaa;
+        color: var(--text-muted);
         cursor: pointer;
-        transition: color 0.2s;
+        transition: var(--transition);
         line-height: 1;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
       }
-      
+
       .close-modal:hover {
-        color: var(--primary-color);
+        color: var(--accent-cyan);
+        background: rgba(0, 245, 255, 0.1);
       }
-      
+
       .modal-body {
         text-align: center;
       }
-      
+
       .modal-body img {
         max-width: 100%;
         height: auto;
-        border-radius: 8px;
+        border-radius: var(--border-radius);
         margin-bottom: 15px;
       }
-      
-      .modal-footer {
-        text-align: center;
-        margin-top: 15px;
-        color: #666;
-        font-size: 14px;
-      }
-      
-      html {
-        scroll-behavior: smooth; /* 添加平滑滚动效果 */
-      }
-      
-      body {
-        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-        color: var(--dark-text);
-        line-height: 1.6;
-        background-color: var(--light-bg);
-        margin: 0;
-        padding: 0;
-      }
-      
+
+      /* 布局容器 */
       .wrapper {
         max-width: 100%;
         width: 100%;
@@ -130,431 +163,534 @@
         display: flex;
         flex-direction: row;
         padding: 0;
+        min-height: 100vh;
       }
-      
+
+      /* 侧边栏 Header */
       header {
         position: sticky;
         top: 0;
-        width: 280px;
-        padding: 35px 25px;
-        background: var(--primary-color);
-        color: var(--light-text);
-        border-right: 1px solid rgba(255,255,255,0.1);
+        width: 300px;
+        padding: 40px 30px;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
         height: 100vh;
         overflow-y: auto;
+        display: flex;
+        flex-direction: column;
       }
-      
+
       header h1 {
-        margin: 0 0 20px 0;
-        font-weight: 600;
-        font-size: 24px;
-        letter-spacing: 0.5px;
+        margin: 0 0 12px 0;
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: -0.5px;
       }
-      
+
       header h1 a {
-        color: white;
+        color: var(--text-primary);
         text-decoration: none;
         transition: var(--transition);
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
-      
+
       header h1 a:hover {
-        color: var(--accent-color);
+        filter: brightness(1.2);
       }
-      
+
+      header p {
+        color: var(--text-secondary);
+        font-size: 14px;
+        margin: 0 0 25px 0;
+      }
+
       header img {
-        max-width: 100%;
-        border-radius: 50%;
+        max-width: 120px;
+        border-radius: 24px;
         display: block;
-        margin: 25px auto;
-        border: 3px solid rgba(255,255,255,0.2);
+        margin: 0 auto 30px;
+        border: 2px solid rgba(0, 245, 255, 0.2);
         transition: var(--transition);
-        box-shadow: var(--box-shadow);
+        box-shadow: var(--glow-cyan);
+        background: var(--bg-card);
       }
-      
+
       header img:hover {
         transform: scale(1.05);
-        border-color: var(--accent-color);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
       }
-      
+
       header ul {
         list-style: none;
         padding: 0;
-        margin: 25px 0;
+        margin: 0 0 25px 0;
       }
-      
+
       header ul li {
-        margin-bottom: 12px;
+        margin-bottom: 8px;
         display: flex;
         align-items: center;
       }
-      
+
       header ul li a {
-        color: rgba(255,255,255,0.85);
+        color: var(--text-secondary);
         text-decoration: none;
         transition: var(--transition);
         font-weight: 500;
+        font-size: 15px;
         display: inline-flex;
         align-items: center;
+        padding: 10px 16px;
+        border-radius: 10px;
+        width: 100%;
       }
-      
+
       header ul li a:hover {
-        color: var(--accent-color);
-        transform: translateX(3px);
+        color: var(--accent-cyan);
+        background: rgba(0, 245, 255, 0.08);
+        transform: translateX(5px);
       }
-      
+
       header ul li a i {
-        margin-right: 10px;
-        font-size: 16px;
+        margin-right: 12px;
+        font-size: 18px;
+        width: 20px;
+        text-align: center;
       }
-      
-      /* 侧边栏bitfree链接样式 */
+
+      /* Bitfree 导航项 */
       .bitfree-nav-item {
-        margin-top: 10px;
-        margin-bottom: 15px;
+        margin-top: 15px;
+        margin-bottom: 20px;
       }
-      
+
       .bitfree-nav-link {
-        background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(44, 62, 80, 0.2));
-        padding: 10px 15px;
-        border-radius: 30px;
+        background: var(--gradient-glow);
+        padding: 14px 18px;
+        border-radius: 14px;
         position: relative;
         overflow: hidden;
         width: 100%;
         display: flex;
         align-items: center;
-        border-left: 3px solid var(--accent-color);
+        border: var(--border-glow);
+        transition: var(--transition);
       }
-      
+
       .bitfree-nav-link:hover {
-        background: linear-gradient(135deg, rgba(52, 152, 219, 0.3), rgba(44, 62, 80, 0.3));
-        transform: translateX(3px);
+        background: rgba(0, 245, 255, 0.12);
+        border-color: rgba(0, 245, 255, 0.3);
+        transform: translateX(5px);
+        box-shadow: var(--glow-cyan);
       }
-      
+
       .bitfree-nav-link i {
-        background: rgba(255,255,255,0.15);
-        width: 28px;
-        height: 28px;
+        background: rgba(0, 245, 255, 0.15);
+        width: 36px;
+        height: 36px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        margin-right: 10px;
-        color: var(--accent-color);
+        border-radius: 10px;
+        margin-right: 12px;
+        color: var(--accent-cyan);
+        font-size: 16px;
       }
-      
+
+      .bitfree-nav-link span {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
       .nav-highlight {
         position: absolute;
-        right: 10px;
+        right: 12px;
         top: 50%;
         transform: translateY(-50%);
-        background-color: var(--accent-color);
-        color: white;
+        background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+        color: var(--bg-primary);
         font-size: 0.65em;
-        padding: 2px 8px;
-        border-radius: 10px;
-        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-weight: 700;
+        box-shadow: var(--glow-cyan);
       }
-      
+
+      /* 主内容区域 */
       section {
         flex: 1;
-        padding: 40px;
-        background: white;
-        box-shadow: var(--box-shadow);
+        padding: 50px;
+        background: var(--bg-primary);
         overflow-y: auto;
-        overflow-x: hidden; /* 防止水平滚动 */
-        height: 100vh;
-        max-width: 100%;
+        overflow-x: hidden;
+        min-height: 100vh;
         box-sizing: border-box;
         width: 100%;
+        position: relative;
       }
-      
+
+      /* 背景装饰 */
+      section::before {
+        content: '';
+        position: fixed;
+        top: -50%;
+        right: -20%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      section::after {
+        content: '';
+        position: fixed;
+        bottom: -30%;
+        left: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+      }
+
       section .container {
-        max-width: 1200px;
+        max-width: 1000px;
         margin: 0 auto;
-        padding: 0 15px;
+        padding: 0 20px;
         box-sizing: border-box;
         width: 100%;
-        overflow-x: hidden; /* 防止内容溢出 */
+        overflow-x: hidden;
+        position: relative;
+        z-index: 1;
       }
-      
+
+      /* 卡片样式 */
       .card {
-        background: white;
+        background: var(--bg-card);
+        backdrop-filter: blur(10px);
+        border: var(--border-glow);
         border-radius: var(--border-radius);
-        padding: 25px;
+        padding: 30px;
         margin-bottom: 30px;
         box-shadow: var(--box-shadow);
         transition: var(--transition);
       }
-      
+
       .card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        border-color: rgba(0, 245, 255, 0.3);
+        box-shadow: var(--glow-cyan), var(--box-shadow);
       }
-      
+
+      /* 标题样式 */
       h2, h3 {
-        color: var(--primary-color);
+        color: var(--text-primary);
         margin-top: 0;
         font-weight: 600;
-        border-bottom: 2px solid var(--accent-color);
-        padding-bottom: 8px;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 12px;
         display: inline-block;
+        margin-bottom: 25px;
       }
-      
+
+      h2 {
+        font-size: 28px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      h3 {
+        font-size: 20px;
+        color: var(--text-primary);
+      }
+
+      /* 链接样式 */
       a {
-        color: var(--accent-color);
+        color: var(--accent-cyan);
         text-decoration: none;
         transition: var(--transition);
       }
-      
+
       a:hover {
-        color: #2980b9;
-        text-decoration: underline;
+        color: var(--accent-blue);
+        text-shadow: var(--glow-cyan);
       }
-      
+
+      /* 支付方式样式 */
       .payment-methods {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
-        margin-top: 20px;
+        gap: 25px;
+        margin-top: 25px;
       }
-      
+
       .payment-method {
         text-align: center;
         width: 200px;
       }
-      
+
       .payment-method img {
         max-width: 100%;
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow);
         transition: var(--transition);
+        border: var(--border-glow);
       }
-      
+
       .payment-method img:hover {
         transform: scale(1.05);
+        box-shadow: var(--glow-cyan);
       }
-      
+
       .payment-method p {
-        margin-top: 10px;
+        margin-top: 12px;
         font-weight: 500;
+        color: var(--text-secondary);
       }
-      
+
       .contact {
         margin-top: 30px;
       }
-      
+
       .contact img {
         max-width: 200px;
         border-radius: var(--border-radius);
         box-shadow: var(--box-shadow);
+        border: var(--border-glow);
       }
-      
+
+      /* 分隔线 */
       .separator {
         height: 1px;
-        background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
-        margin: 30px 0;
+        background: linear-gradient(to right, transparent, rgba(0, 245, 255, 0.3), transparent);
+        margin: 40px 0;
       }
-      
+
+      /* 课程项样式 */
       .course-item {
         display: flex;
         align-items: center;
         margin-bottom: 15px;
-        padding: 15px;
+        padding: 18px;
         border-radius: var(--border-radius);
-        background: #f8f9fa;
+        background: var(--bg-card);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         transition: var(--transition);
       }
-      
+
       .course-item:hover {
-        background: #e9ecef;
+        background: var(--bg-card-hover);
+        border-color: rgba(0, 245, 255, 0.2);
+        transform: translateX(5px);
       }
-      
+
       .course-icon {
-        margin-right: 15px;
-        font-size: 20px;
-        color: var(--accent-color);
+        margin-right: 18px;
+        font-size: 22px;
+        color: var(--accent-cyan);
       }
-      
+
       .course-info {
         flex: 1;
       }
-      
+
       .course-price {
         font-weight: 600;
-        color: var(--primary-color);
+        color: var(--accent-cyan);
       }
-      
+
       .category-title {
         margin-top: 40px;
         margin-bottom: 20px;
         position: relative;
-        padding-left: 15px;
+        padding-left: 18px;
       }
-      
+
       .category-title:before {
         content: '';
         position: absolute;
         left: 0;
-        top: 8px;
-        height: 20px;
-        width: 5px;
-        background: var(--accent-color);
+        top: 6px;
+        height: 24px;
+        width: 4px;
+        background: var(--gradient-primary);
         border-radius: 3px;
       }
-      
+
       .service-box {
-        background: #f8f9fa;
+        background: var(--bg-card);
         border-radius: var(--border-radius);
-        padding: 20px;
-        margin-bottom: 20px;
+        padding: 25px;
+        margin-bottom: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
       }
-      
+
       .service-title {
         font-weight: 600;
-        color: var(--primary-color);
-        margin-bottom: 10px;
+        color: var(--text-primary);
+        margin-bottom: 12px;
       }
-      
+
       .service-steps {
         padding-left: 20px;
       }
-      
+
       .service-steps li {
-        margin-bottom: 8px;
+        margin-bottom: 10px;
+        color: var(--text-secondary);
       }
-      
+
       .highlight-price {
-        color: #e74c3c;
+        color: var(--accent-pink);
         font-size: 1.2em;
       }
-      
+
       .note {
         font-style: italic;
-        color: #7f8c8d;
+        color: var(--text-muted);
         font-size: 0.9em;
-        margin-top: 5px;
+        margin-top: 8px;
       }
-      
+
       .badge {
         display: inline-block;
-        background-color: var(--accent-color);
+        background: var(--gradient-primary);
         color: white;
         font-size: 0.7em;
-        padding: 2px 8px;
+        padding: 3px 10px;
         border-radius: 12px;
-        margin-left: 8px;
+        margin-left: 10px;
         vertical-align: middle;
       }
-      
-      /* Bitfree Showcase Styles */
+
+      /* Bitfree 展示区 - 科技感渐变风格 */
       .bitfree-showcase {
-        background: linear-gradient(135deg, #2c3e50, #3498db);
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.3));
         border-radius: var(--border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        color: white;
+        padding: 35px;
+        margin-bottom: 35px;
+        box-shadow: var(--glow-purple), var(--box-shadow);
+        color: var(--text-primary);
         position: relative;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        transition: var(--transition);
       }
-      
+
       .bitfree-showcase:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        transform: translateY(-5px);
+        box-shadow: 0 0 30px rgba(139, 92, 246, 0.4), var(--box-shadow);
       }
-      
+
       .bitfree-showcase:before {
-        content: "";
+        content: '';
         position: absolute;
         top: -50%;
         left: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(rgba(255,255,255,0.1), transparent 70%);
-        transform: rotate(30deg);
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
         pointer-events: none;
       }
-      
+
       .bitfree-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         flex-wrap: wrap;
       }
-      
+
       .bitfree-header h2 {
-        color: white;
-        border-bottom: none;
+        color: var(--text-primary);
+        border: none;
         margin: 0;
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 700;
         display: flex;
         align-items: center;
+        background: none;
+        -webkit-text-fill-color: var(--text-primary);
       }
-      
+
       .bitfree-header h2 i {
-        margin-right: 12px;
-        font-size: 24px;
-        background: rgba(255,255,255,0.2);
-        width: 40px;
-        height: 40px;
+        margin-right: 14px;
+        font-size: 22px;
+        background: rgba(139, 92, 246, 0.2);
+        width: 42px;
+        height: 42px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
+        border-radius: 12px;
+        color: var(--accent-cyan);
       }
-      
+
       .bitfree-badge {
-        background: rgba(255,255,255,0.2);
-        color: white;
+        background: rgba(0, 245, 255, 0.15);
+        color: var(--accent-cyan);
         font-size: 0.8em;
-        padding: 5px 12px;
+        padding: 6px 14px;
         border-radius: 20px;
-        font-weight: 500;
+        font-weight: 600;
+        border: 1px solid rgba(0, 245, 255, 0.3);
       }
-      
+
       .bitfree-content {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 20px;
         gap: 30px;
       }
-      
+
       .bitfree-description {
         flex: 2;
         min-width: 300px;
       }
-      
+
       .bitfree-description p {
         font-size: 1.05em;
         margin-top: 0;
+        color: var(--text-secondary);
       }
-      
+
       .bitfree-features {
         list-style: none;
         padding: 0;
         margin: 20px 0 0 0;
       }
-      
+
       .bitfree-features li {
-        margin-bottom: 12px;
+        margin-bottom: 14px;
         display: flex;
         align-items: center;
+        color: var(--text-secondary);
       }
-      
+
       .bitfree-features li i {
-        margin-right: 10px;
-        background: rgba(255,255,255,0.15);
-        width: 28px;
-        height: 28px;
+        margin-right: 12px;
+        background: rgba(0, 245, 255, 0.15);
+        width: 32px;
+        height: 32px;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
+        border-radius: 10px;
+        color: var(--accent-cyan);
+        font-size: 14px;
       }
-      
+
+      .bitfree-features li strong {
+        color: var(--text-primary);
+      }
+
       .bitfree-action {
         flex: 1;
         min-width: 200px;
@@ -563,264 +699,276 @@
         align-items: center;
         justify-content: center;
       }
-      
+
       .bitfree-button {
-        background: white;
-        color: var(--primary-color);
-        padding: 12px 25px;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 14px 28px;
         border-radius: 30px;
         font-weight: 600;
         text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: var(--transition);
         width: 100%;
         max-width: 200px;
-        margin-bottom: 15px;
+        box-shadow: var(--glow-purple);
       }
-      
+
       .bitfree-button:hover {
         transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        color: var(--accent-color);
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
         text-decoration: none;
+        filter: brightness(1.1);
       }
-      
+
       .bitfree-button span {
-        margin-right: 8px;
+        margin-right: 10px;
       }
-      
+
+      .bitfree-button i {
+        transition: transform 0.3s ease;
+      }
+
+      .bitfree-button:hover i {
+        transform: translateX(5px);
+      }
+
       .bitfree-note {
         font-size: 0.85em;
-        opacity: 0.8;
-        margin: 5px 0 0 0;
+        opacity: 0.7;
+        margin: 12px 0 0 0;
+        color: var(--text-muted);
       }
-      
-      /* Animation for bitfree section */
-      .bitfree-showcase {
-        animation: fadeInUp 0.8s ease-out;
+
+      .bitfree-note i {
+        margin-right: 5px;
       }
-      
-      /* 个性化服务样式 */
+
+      /* 个性化服务样式 - 科技深蓝风格 */
       .personal-services {
-        background: linear-gradient(135deg, #4b6cb7, #182848);
+        background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(0, 245, 255, 0.1));
         border-radius: var(--border-radius);
-        padding: 30px;
-        margin-bottom: 30px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        color: white;
+        padding: 35px;
+        margin-bottom: 35px;
+        box-shadow: var(--glow-cyan), var(--box-shadow);
+        color: var(--text-primary);
         position: relative;
         overflow: hidden;
-        animation: fadeInUp 0.8s ease-out;
+        border: 1px solid rgba(0, 245, 255, 0.2);
       }
-      
+
       .personal-services:before {
-        content: "";
+        content: '';
         position: absolute;
         top: -100px;
         right: -100px;
-        width: 200px;
-        height: 200px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 70%);
         pointer-events: none;
       }
-      
+
       .personal-services:after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: -80px;
         left: -80px;
-        width: 160px;
-        height: 160px;
-        background: rgba(255,255,255,0.05);
-        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
         pointer-events: none;
       }
-      
+
       .personal-services-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
         flex-wrap: wrap;
       }
-      
+
       .services-title-container {
         display: flex;
         flex-direction: column;
       }
-      
+
       .personal-services-header h2 {
-        color: white;
-        border-bottom: none;
+        color: var(--text-primary);
+        border: none;
         margin: 0;
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 700;
         display: flex;
         align-items: center;
+        background: none;
+        -webkit-text-fill-color: var(--text-primary);
       }
-      
+
       .personal-services-header h2 i {
-        margin-right: 12px;
-        font-size: 24px;
-        color: #a3bffa;
+        margin-right: 14px;
+        font-size: 22px;
+        color: var(--accent-cyan);
       }
-      
+
       .services-subtitle {
-        margin-top: 5px;
+        margin-top: 6px;
         font-size: 0.9em;
-        opacity: 0.8;
+        color: var(--text-secondary);
       }
-      
+
       .services-badge {
-        background: rgba(255,255,255,0.15);
-        color: white;
+        background: rgba(0, 245, 255, 0.15);
+        color: var(--accent-cyan);
         font-size: 0.8em;
         font-weight: 600;
-        padding: 6px 12px;
+        padding: 6px 14px;
         border-radius: 20px;
         display: inline-flex;
         align-items: center;
-        border: 1px solid rgba(255,255,255,0.3);
+        border: 1px solid rgba(0, 245, 255, 0.3);
       }
-      
+
       .services-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 25px;
-        margin-top: 20px;
       }
-      
+
       .service-card {
-        background: rgba(255,255,255,0.1);
+        background: rgba(10, 14, 39, 0.6);
+        backdrop-filter: blur(10px);
         border-radius: var(--border-radius);
-        padding: 25px;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255,255,255,0.1);
+        padding: 28px;
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         position: relative;
         overflow: hidden;
       }
-      
+
       .service-card:hover {
         transform: translateY(-5px);
-        background: rgba(255,255,255,0.15);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        background: rgba(23, 30, 60, 0.8);
+        border-color: rgba(0, 245, 255, 0.3);
+        box-shadow: var(--glow-cyan), var(--box-shadow);
       }
-      
+
       .service-card-header {
         display: flex;
         align-items: center;
-        margin-bottom: 15px;
+        margin-bottom: 18px;
         position: relative;
       }
-      
+
       .service-icon {
-        width: 45px;
-        height: 45px;
-        background: rgba(255,255,255,0.15);
-        border-radius: 12px;
+        width: 50px;
+        height: 50px;
+        background: rgba(0, 245, 255, 0.15);
+        border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 15px;
+        margin-right: 16px;
       }
-      
+
       .service-icon i {
-        font-size: 20px;
-        color: #a3bffa;
+        font-size: 22px;
+        color: var(--accent-cyan);
       }
-      
+
       .service-name {
         margin: 0;
         font-size: 20px;
         font-weight: 600;
-        color: white;
+        color: var(--text-primary);
       }
-      
+
       .service-tag {
         position: absolute;
         right: 0;
         top: 0;
-        background: #e74c3c;
+        background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
         color: white;
         font-size: 0.7em;
-        padding: 3px 10px;
+        padding: 4px 12px;
         border-radius: 15px;
         font-weight: 600;
       }
-      
+
       .service-description {
-        margin-bottom: 20px;
+        margin-bottom: 22px;
         font-size: 0.95em;
-        line-height: 1.5;
-        opacity: 0.9;
+        line-height: 1.6;
+        color: var(--text-secondary);
       }
-      
+
       .service-process {
-        margin-bottom: 20px;
+        margin-bottom: 22px;
       }
-      
+
       .process-step {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
-        padding: 8px 0;
-        border-bottom: 1px dashed rgba(255,255,255,0.1);
+        margin-bottom: 12px;
+        padding: 10px 0;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
       }
-      
+
       .process-step:last-child {
         border-bottom: none;
       }
-      
+
       .step-number {
-        width: 24px;
-        height: 24px;
-        background: rgba(255,255,255,0.2);
+        width: 28px;
+        height: 28px;
+        background: rgba(0, 245, 255, 0.2);
+        border: 1px solid rgba(0, 245, 255, 0.3);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.8em;
+        font-size: 0.85em;
         font-weight: 600;
-        margin-right: 12px;
+        margin-right: 14px;
         flex-shrink: 0;
+        color: var(--accent-cyan);
       }
-      
+
       .step-text {
-        font-size: 0.9em;
+        font-size: 0.92em;
+        color: var(--text-secondary);
       }
-      
+
       .service-action {
-        margin-top: 20px;
+        margin-top: 22px;
         display: flex;
         justify-content: center;
       }
-      
+
       .service-button {
-        background: rgba(255,255,255,0.9);
-        color: #4b6cb7;
-        padding: 10px 20px;
+        background: var(--gradient-primary);
+        color: white;
+        padding: 12px 24px;
         border-radius: 30px;
         font-weight: 600;
         text-decoration: none;
-        transition: all 0.3s ease;
+        transition: var(--transition);
         display: inline-block;
         text-align: center;
         min-width: 140px;
+        box-shadow: var(--glow-purple);
       }
-      
+
       .service-button:hover {
         transform: scale(1.05);
-        background: white;
-        color: #182848;
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
         text-decoration: none;
+        filter: brightness(1.1);
       }
-      
-      /* 点击预约按钮时的动画效果 */
+
       .service-button:active {
-        transform: scale(0.95);
+        transform: scale(0.98);
         transition: transform 0.1s;
       }
 
@@ -831,50 +979,78 @@
 
       .form-group label {
         display: block;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         font-weight: 500;
-        color: var(--primary-color);
+        color: var(--text-primary);
       }
 
       .form-group input,
       .form-group select {
         width: 100%;
-        padding: 10px 15px;
-        border: 1px solid #ddd;
+        padding: 12px 16px;
+        background: rgba(10, 14, 39, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: var(--border-radius);
-        font-size: 16px;
+        font-size: 15px;
         transition: var(--transition);
+        color: var(--text-primary);
+      }
+
+      .form-group input::placeholder {
+        color: var(--text-muted);
       }
 
       .form-group input:focus,
       .form-group select:focus {
         outline: none;
-        border-color: var(--accent-color);
-        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        border-color: var(--accent-cyan);
+        box-shadow: var(--glow-cyan);
+        background: rgba(10, 14, 39, 0.8);
+      }
+
+      .form-group select {
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2300f5ff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        padding-right: 40px;
+      }
+
+      .form-group select option {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
       }
 
       .submit-btn {
-        background-color: var(--accent-color);
+        background: var(--gradient-primary);
         color: white;
         border: none;
-        padding: 12px 20px;
-        border-radius: var(--border-radius);
+        padding: 14px 24px;
+        border-radius: 30px;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 600;
         cursor: pointer;
         width: 100%;
         transition: var(--transition);
+        box-shadow: var(--glow-purple);
       }
 
       .submit-btn:hover {
-        background-color: #2980b9;
+        filter: brightness(1.1);
+        box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
       }
-      
-      /* 锚点链接的偏移，解决固定头部遮挡问题 */
+
+      .submit-btn:active {
+        transform: scale(0.98);
+      }
+
+      /* 锚点偏移 */
       #contact {
-        scroll-margin-top: 20px; /* 确保滚动到锚点时有足够的顶部间距 */
+        scroll-margin-top: 20px;
       }
-      
+
+      /* 动画关键帧 */
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -885,209 +1061,167 @@
           transform: translateY(0);
         }
       }
-      
-      /* 确保所有设备没有多余的边距和水平滚动 */
-      body, html {
-        margin: 0;
-        padding: 0;
-        overflow-x: hidden;
-        width: 100%;
-        max-width: 100%;
-        -webkit-overflow-scrolling: touch; /* 提升移动端滚动体验 */
+
+      @keyframes glowPulse {
+        0%, 100% {
+          box-shadow: var(--glow-cyan), var(--box-shadow);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(0, 245, 255, 0.5), var(--box-shadow);
+        }
       }
-      
-      /* 确保所有内容元素不会导致水平滚动 */
-      *, *::before, *::after {
-        box-sizing: border-box;
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      
+
+      section {
+        animation: fadeIn 0.6s ease-out;
+      }
+
       img, svg, video {
         max-width: 100%;
         height: auto;
       }
-      
-      /* Responsive adjustments */
-      @media (max-width: 600px) {
-        .bitfree-header, .personal-services-header {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        
-        .bitfree-badge, .services-badge {
-          margin-top: 10px;
-          align-self: flex-start;
-        }
-        
-        .bitfree-content {
-          flex-direction: column;
-        }
-        
-        section {
-          padding: 20px 15px;
-        }
-        
-        .services-grid {
-          grid-template-columns: 1fr;
-        }
-        
-        .personal-services, .bitfree-showcase {
-          padding: 20px;
-        }
-        
-        .course-item {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        
-        .course-icon {
-          margin-bottom: 10px;
-        }
-        
-        .course-price {
-          margin-top: 10px;
-        }
-      }
-      
+
+      /* 响应式设计 */
       @media (max-width: 800px) {
         .wrapper {
           flex-direction: column;
-          width: 100%;
-          max-width: 100%;
-          overflow-x: hidden;
         }
-        
+
         header {
           width: 100%;
-          box-sizing: border-box;
           height: auto;
           position: relative;
-          padding: 15px;
-          margin: 0;
+          padding: 25px 20px;
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         header img {
-          width: 80px;
-          height: 80px;
-          margin: 10px auto;
+          max-width: 90px;
+          margin: 0 auto 20px;
         }
-        
+
         header h1 {
-          font-size: 20px;
+          font-size: 22px;
           text-align: center;
-          margin-bottom: 10px;
         }
-        
+
         header p {
           text-align: center;
-          margin: 5px 0;
         }
-        
+
         header ul {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
-          margin: 10px 0;
-          gap: 10px;
+          gap: 8px;
         }
-        
-        header ul li {
-          margin: 0;
+
+        header ul li a {
+          font-size: 14px;
+          padding: 8px 12px;
         }
-        
-        header .bitfree-nav-item {
-          margin: 5px 0;
-          width: 100%;
-        }
-        
+
         section {
-          height: auto;
-          min-height: calc(100vh - 180px); /* 减小header的高度影响 */
-          padding: 20px 15px;
-          width: 100%;
-          box-sizing: border-box;
-          margin: 0;
-          max-width: 100%;
+          padding: 30px 20px;
+          min-height: auto;
         }
-        
-        .container {
-          width: 100%;
-          max-width: 100%;
-          box-sizing: border-box;
-          padding: 0;
+
+        section::before,
+        section::after {
+          display: none;
         }
-        
-        .payment-methods {
-          justify-content: center;
-        }
-        
-        /* 调整主题切换按钮位置 */
-        .theme-toggle {
-          top: 10px;
-          right: 10px;
-          width: 32px;
-          height: 32px;
-        }
-      }
-      
-      @media (min-width: 801px) {
-        .wrapper {
-          min-height: 100vh;
-          overflow-x: hidden; /* 防止整个页面可以水平滚动 */
-        }
-        
-        section {
-          flex: 1;
-          display: flex;
+
+        .bitfree-header,
+        .personal-services-header {
           flex-direction: column;
-          overflow-x: hidden; /* 确保PC端也不会水平滚动 */
-          width: 100%;
-          max-width: calc(100% - 280px); /* 考虑到header的宽度 */
+          align-items: flex-start;
         }
-        
-        section .container {
-          flex: 1;
-          width: 100%;
-          max-width: 1200px;
-          overflow-x: hidden; /* 确保内容不会溢出 */
+
+        .bitfree-badge,
+        .services-badge {
+          margin-top: 12px;
+        }
+
+        .bitfree-content {
+          flex-direction: column;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .bitfree-showcase,
+        .personal-services {
+          padding: 25px 20px;
+        }
+
+        .theme-toggle {
+          top: 15px;
+          right: 15px;
+          width: 36px;
+          height: 36px;
         }
       }
-      
-      @media (min-width: 1600px) {
-        section .container {
-          max-width: 1400px;
+
+      @media (max-width: 600px) {
+        section {
+          padding: 25px 15px;
+        }
+
+        .bitfree-showcase,
+        .personal-services {
+          padding: 20px 15px;
+        }
+
+        .service-card {
+          padding: 22px;
         }
       }
-      
-      /* Dark mode toggle */
+
+      @media (min-width: 801px) {
+        section {
+          max-width: calc(100% - 300px);
+        }
+      }
+
+      @media (min-width: 1400px) {
+        section .container {
+          max-width: 1100px;
+        }
+      }
+
+      /* 主题切换按钮 */
       .theme-toggle {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        background: rgba(255,255,255,0.1);
-        border: none;
-        color: white;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+        top: 25px;
+        right: 25px;
+        background: rgba(0, 245, 255, 0.1);
+        border: 1px solid rgba(0, 245, 255, 0.2);
+        color: var(--accent-cyan);
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: var(--transition);
       }
-      
+
       .theme-toggle:hover {
-        background: rgba(255,255,255,0.2);
-      }
-      
-      /* Animation */
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      
-      section {
-        animation: fadeIn 0.5s ease-out;
+        background: rgba(0, 245, 255, 0.2);
+        box-shadow: var(--glow-cyan);
       }
     </style>
   </head>
@@ -1171,148 +1305,79 @@
     
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
-      // 添加深色模式切换功能
       document.addEventListener('DOMContentLoaded', function() {
-        // 微信二维码模态框功能
+        // 模态框功能
+        const contactFormModal = document.getElementById('contactFormModal');
         const closeModal = document.querySelector('.close-modal');
-        
+
         // 关闭模态框
         closeModal.addEventListener('click', function() {
           contactFormModal.style.opacity = '0';
           setTimeout(() => {
             contactFormModal.classList.remove('show');
-          }, 300); // 等待过渡动画完成
+          }, 300);
         });
-        
-        
+
         // ESC键关闭模态框
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape' && contactFormModal.classList.contains('show')) {
             contactFormModal.style.opacity = '0';
             setTimeout(() => {
-              modal.classList.remove('show');
+              contactFormModal.classList.remove('show');
             }, 300);
           }
         });
-        
-        // 发送页面访问统计请求到bitfree.cn
-        fetch('https://bitfree.cn/api/user/registerView', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ origin: 'githubPage' }),
-        })
-        .then(response => {
-          if (response.ok) {
-            console.log('页面访问已记录');
+
+        // 点击模态框外部关闭
+        contactFormModal.addEventListener('click', function(e) {
+          if (e.target === contactFormModal) {
+            contactFormModal.style.opacity = '0';
+            setTimeout(() => {
+              contactFormModal.classList.remove('show');
+            }, 300);
           }
-        })
-        .catch(error => {
-          console.error('记录页面访问失败:', error);
         });
-        
-        // 为"立即预约"按钮添加点击事件，显示联系表单模态框
+
+        // 为"立即预约"按钮添加点击事件
         const serviceButtons = document.querySelectorAll('.service-button');
         serviceButtons.forEach(button => {
           button.addEventListener('click', function(e) {
-            e.preventDefault(); // 阻止默认的锚点跳转
-            
-            // 显示联系表单模态框
-            const modal = document.getElementById('contactFormModal');
-            modal.classList.add('show');
-            
-            // 添加动画效果
+            e.preventDefault();
+            contactFormModal.classList.add('show');
             setTimeout(() => {
-              modal.style.opacity = '1';
+              contactFormModal.style.opacity = '1';
             }, 10);
           });
         });
-        
+
+        // 主题切换功能
         const themeToggle = document.getElementById('theme-toggle');
-        const icon = themeToggle.querySelector('i');
+        const icon = themeToggle?.querySelector('i');
         const root = document.documentElement;
-        
-        // 检查用户偏好
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const savedTheme = localStorage.getItem('theme');
-        
-        // 应用主题
-        if (savedTheme === 'dark' || (!savedTheme && prefersDarkMode)) {
-          enableDarkMode();
-        }
-        
-        themeToggle.addEventListener('click', function() {
-          if (root.classList.contains('dark-theme')) {
-            disableDarkMode();
-          } else {
+
+        // 默认深色主题
+        let isDarkTheme = true;
+
+        themeToggle?.addEventListener('click', function() {
+          isDarkTheme = !isDarkTheme;
+          if (isDarkTheme) {
             enableDarkMode();
+          } else {
+            enableLightMode();
           }
         });
-        
+
         function enableDarkMode() {
-          root.classList.add('dark-theme');
-          document.body.style.backgroundColor = '#1a1a1a';
-          document.body.style.color = '#e0e0e0';
-          document.querySelector('section').style.backgroundColor = '#2d2d2d';
-          document.querySelectorAll('.card, .course-item').forEach(el => {
-            el.style.backgroundColor = '#333';
-          });
-          document.querySelectorAll('h2, h3').forEach(el => {
-            el.style.color = '#e0e0e0';
-          });
-          
-          // 调整bitfree区块在深色模式下的样式
-          const bitfreeShowcase = document.querySelector('.bitfree-showcase');
-          if (bitfreeShowcase) {
-            bitfreeShowcase.style.background = 'linear-gradient(135deg, #1e3c72, #2a5298)';
-            bitfreeShowcase.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-          }
-          
-          // 调整bitfree导航项在深色模式下的样式
-          const bitfreeNavLink = document.querySelector('.bitfree-nav-link');
-          if (bitfreeNavLink) {
-            bitfreeNavLink.style.background = 'linear-gradient(135deg, rgba(30, 60, 114, 0.4), rgba(42, 82, 152, 0.4))';
-            bitfreeNavLink.style.borderLeft = '3px solid #2a5298';
-          }
-          
-          // 调整个性化服务区块在深色模式下的样式
-          const personalServices = document.querySelector('.personal-services');
-          if (personalServices) {
-            personalServices.style.background = 'linear-gradient(135deg, #1a2980, #26d0ce)';
-            personalServices.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-          }
-          
-          // 调整服务卡片在深色模式下的样式
-          document.querySelectorAll('.service-card').forEach(card => {
-            card.style.background = 'rgba(255,255,255,0.08)';
-            card.style.borderColor = 'rgba(255,255,255,0.05)';
-          });
-          
-          document.querySelectorAll('.service-button').forEach(button => {
-            button.style.background = 'rgba(255,255,255,0.8)';
-            button.style.color = '#1a2980';
-          });
-          
-          icon.classList.replace('fa-moon', 'fa-sun');
+          document.body.style.background = 'var(--bg-primary)';
+          document.body.style.color = 'var(--text-primary)';
+          if (icon) icon.classList.replace('fa-sun', 'fa-moon');
           localStorage.setItem('theme', 'dark');
         }
-        
-        function disableDarkMode() {
-          root.classList.remove('dark-theme');
-          document.body.style.backgroundColor = 'var(--light-bg)';
-          document.body.style.color = 'var(--dark-text)';
-          document.querySelector('section').style.backgroundColor = 'white';
-          document.querySelectorAll('.card').forEach(el => {
-            el.style.backgroundColor = 'white';
-          });
-          document.querySelectorAll('.course-item').forEach(el => {
-            el.style.backgroundColor = '#f8f9fa';
-          });
-          document.querySelectorAll('h2, h3').forEach(el => {
-            el.style.color = 'var(--primary-color)';
-          });
-          icon.classList.replace('fa-sun', 'fa-moon');
+
+        function enableLightMode() {
+          document.body.style.background = '#f5f7fa';
+          document.body.style.color = '#333';
+          if (icon) icon.classList.replace('fa-moon', 'fa-sun');
           localStorage.setItem('theme', 'light');
         }
 
@@ -1321,18 +1386,17 @@
         if (contactForm) {
           contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const formData = {
               wechat: document.getElementById('contactWechat').value,
               type: document.getElementById('contactType').value
             };
-            
-            // 表单验证
+
             if (!formData.wechat || !formData.type) {
               alert('请填写所有必填字段');
               return;
             }
-            
+
             try {
               const response = await fetch('https://bitfree.cn/api/feed/contact', {
                 method: 'POST',
@@ -1341,14 +1405,13 @@
                 },
                 body: JSON.stringify(formData)
               });
-              
+
               if (response.ok) {
                 alert('提交成功！我们会尽快与您联系');
                 contactForm.reset();
-                const modal = document.getElementById('contactFormModal');
-                modal.style.opacity = '0';
+                contactFormModal.style.opacity = '0';
                 setTimeout(() => {
-                  modal.classList.remove('show');
+                  contactFormModal.classList.remove('show');
                 }, 300);
               } else {
                 throw new Error('提交失败');
@@ -1359,12 +1422,15 @@
             }
           });
         }
-        
-        // 为每个课程项添加动画
-        const courseItems = document.querySelectorAll('.course-item');
-        courseItems.forEach((item, index) => {
-          item.style.animation = `fadeIn 0.3s ease-out ${index * 0.1}s both`;
-        });
+
+        // 页面访问统计
+        fetch('https://bitfree.cn/api/user/registerView', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ origin: 'githubPage' }),
+        }).catch(error => console.error('记录页面访问失败:', error));
       });
     </script>
   </body>
