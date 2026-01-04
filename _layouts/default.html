@@ -1178,17 +1178,17 @@
         
         // 关闭模态框
         closeModal.addEventListener('click', function() {
-          modal.style.opacity = '0';
+          contactFormModal.style.opacity = '0';
           setTimeout(() => {
-            modal.classList.remove('show');
+            contactFormModal.classList.remove('show');
           }, 300); // 等待过渡动画完成
         });
         
         
         // ESC键关闭模态框
         document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && modal.classList.contains('show')) {
-            modal.style.opacity = '0';
+          if (e.key === 'Escape' && contactFormModal.classList.contains('show')) {
+            contactFormModal.style.opacity = '0';
             setTimeout(() => {
               modal.classList.remove('show');
             }, 300);
