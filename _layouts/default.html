@@ -1162,10 +1162,6 @@
         <div class="modal-body">
           <form id="contactForm">
             <div class="form-group">
-              <label for="contactName">联系方式</label>
-              <input type="text" id="contactName" name="name" required placeholder="请输入您的姓名或电话">
-            </div>
-            <div class="form-group">
               <label for="contactWechat">微信号</label>
               <input type="text" id="contactWechat" name="wechat" required placeholder="请输入您的微信">
             </div>
@@ -1356,13 +1352,13 @@
             };
             
             // 表单验证
-            if (!formData.name || !formData.wechat || !formData.type) {
+            if (!formData.wechat || !formData.type) {
               alert('请填写所有必填字段');
               return;
             }
             
             try {
-              const response = await fetch('https://bitfree.cn/api/message/contact', {
+              const response = await fetch('https://bitfree.cn/api/feed/contact', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
