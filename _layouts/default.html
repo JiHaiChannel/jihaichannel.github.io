@@ -1406,7 +1406,7 @@
                 body: JSON.stringify(formData)
               });
 
-              const data = await res.json()
+              const data = await response.json()
 
               if (data.code == 200) {
                 alert('提交成功！我们会尽快与您联系');
