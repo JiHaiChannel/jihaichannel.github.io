@@ -1169,9 +1169,9 @@
               <label for="contactType">咨询类型</label>
               <select id="contactType" name="type" required>
                 <option value="">请选择咨询类型</option>
-                <option value="mock_interview">模拟面试+复盘</option>
-                <option value="career_consulting">职业咨询</option>
-                <option value="technical_guidance">技术指导</option>
+                <option value="模拟面试+复盘">模拟面试+复盘</option>
+                <option value="职业咨询">职业咨询</option>
+                <option value="技术指导">技术指导</option>
               </select>
             </div>
             <div class="form-group">
@@ -1346,7 +1346,6 @@
             e.preventDefault();
             
             const formData = {
-              name: document.getElementById('contactName').value,
               wechat: document.getElementById('contactWechat').value,
               type: document.getElementById('contactType').value
             };
