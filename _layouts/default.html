@@ -1406,6 +1406,8 @@
                 body: JSON.stringify(formData)
               });
 
+              console.log(response.json())
+
               if (response.json().code == 200) {
                 alert('提交成功！我们会尽快与您联系');
                 contactForm.reset();
