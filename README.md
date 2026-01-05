@@ -51,7 +51,7 @@
       <div class="service-process">
         <div class="process-step">
           <span class="step-number">1</span>
-          <span class="step-text">添加微信</span>
+          <span class="step-text">B站私信</span>
         </div>
         <div class="process-step">
           <span class="step-number">2</span>
@@ -88,7 +88,7 @@
       <div class="service-process">
         <div class="process-step">
           <span class="step-number">1</span>
-          <span class="step-text">添加微信</span>
+          <span class="step-text">B站私信</span>
         </div>
         <div class="process-step">
           <span class="step-number">2</span>
