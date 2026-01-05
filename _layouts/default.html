@@ -1341,12 +1341,10 @@
         // 为"立即预约"按钮添加点击事件
         const serviceButtons = document.querySelectorAll('.service-button');
         serviceButtons.forEach(button => {
-          button.addEventListener('click', function(e) {
+            button.addEventListener('click', function(e) {
             e.preventDefault();
-            contactFormModal.classList.add('show');
-            setTimeout(() => {
-              contactFormModal.style.opacity = '1';
-            }, 10);
+            // 移除弹窗逻辑，改为直接打开B站私信页面
+            window.open('https://message.bilibili.com/?spm_id_from=333.1387.0.0#/whisper/mid1525355', '_blank');
           });
         });
 
