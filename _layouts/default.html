@@ -715,9 +715,239 @@
         transform: translateX(3px);
       }
 
-      /* 服务区域 */
+      /* 服务区域 - 新结构样式 */
       .services-section {
         margin-bottom: 32px;
+      }
+
+      .service-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .service-item {
+        background: var(--bg-card);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .service-item:hover {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .service-main {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px;
+        cursor: pointer;
+      }
+
+      .service-icon {
+        width: 44px;
+        height: 44px;
+        background: rgba(139, 92, 246, 0.15);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .service-icon i {
+        font-size: 18px;
+        color: #8b5cf6;
+      }
+
+      .service-item[data-service="career"] .service-icon {
+        background: rgba(16, 185, 129, 0.15);
+      }
+
+      .service-item[data-service="career"] .service-icon i {
+        color: #10b981;
+      }
+
+      .service-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .service-info h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 4px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        padding: 0;
+        background: none;
+        -webkit-text-fill-color: initial;
+      }
+
+      .service-info p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .tag-hot {
+        font-size: 11px;
+        color: #ef4444;
+        font-weight: 500;
+      }
+
+      .btn-expand {
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+
+      .btn-expand:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+      }
+
+      .btn-expand i {
+        transition: transform 0.3s ease;
+      }
+
+      .service-item.expanded .btn-expand i {
+        transform: rotate(180deg);
+      }
+
+      .service-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .service-item.expanded .service-details {
+        max-height: 200px;
+        padding: 0 20px 20px;
+      }
+
+      .process-simple {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .step {
+        font-size: 13px;
+        color: var(--text-secondary);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 6px 12px;
+        border-radius: 20px;
+      }
+
+      .step-arrow {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .service-details .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* 社区区域 */
+      .community-section {
+        background: var(--bg-card);
+        border-radius: 16px;
+        padding: 28px;
+        margin-bottom: 32px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .section-label {
+        font-size: 12px;
+        color: #3b82f6;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .section-desc {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 8px 0 20px;
+      }
+
+      .feature-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .tag {
+        font-size: 13px;
+        color: var(--text-secondary);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 6px 12px;
+        border-radius: 20px;
+      }
+
+      /* 联系区域 */
+      .contact-section {
+        text-align: center;
+      }
+
+      .contact-section h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 8px 0;
+        border: none;
+        padding: 0;
+        background: none;
+        -webkit-text-fill-color: initial;
+      }
+
+      .contact-grid {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .contact-item {
+        text-align: center;
+      }
+
+      .contact-item img {
+        width: 140px;
+        height: 140px;
+        border-radius: 12px;
+        object-fit: cover;
+        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .contact-item span {
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
       }
 
       .section-header {
@@ -856,6 +1086,131 @@
         background: rgba(255, 255, 255, 0.05);
         color: var(--text-primary);
         text-decoration: none;
+      }
+
+      /* 服务列表 - 新结构 */
+      .service-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .service-item {
+        background: var(--bg-card);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+        transition: var(--transition);
+      }
+
+      .service-item:hover {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .service-main {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px;
+        cursor: pointer;
+      }
+
+      .service-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .service-info h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 6px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: none;
+        padding: 0;
+        background: none;
+        -webkit-text-fill-color: initial;
+      }
+
+      .service-info p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .tag-hot {
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-weight: 500;
+      }
+
+      .btn-expand {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+
+      .btn-expand:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-primary);
+      }
+
+      .btn-expand i {
+        transition: transform 0.3s ease;
+      }
+
+      .service-item.expanded .btn-expand i {
+        transform: rotate(180deg);
+      }
+
+      .service-details {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
+        padding: 0 20px;
+      }
+
+      .service-item.expanded .service-details {
+        max-height: 200px;
+        padding: 0 20px 20px;
+      }
+
+      .process-simple {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+
+      .step {
+        background: rgba(59, 130, 246, 0.1);
+        color: var(--text-secondary);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .step-arrow {
+        color: var(--text-muted);
+        font-size: 12px;
       }
 
       /* 联系区域 */
@@ -1122,9 +1477,75 @@
           padding: 20px;
         }
 
+        /* 服务列表移动端适配 */
+        .service-main {
+          padding: 16px;
+          gap: 12px;
+        }
+
+        .service-info h3 {
+          font-size: 15px;
+        }
+
+        .service-info p {
+          font-size: 13px;
+        }
+
+        .service-icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        .service-icon i {
+          font-size: 16px;
+        }
+
+        .service-item.expanded .service-details {
+          padding: 0 16px 16px;
+        }
+
+        .process-simple {
+          gap: 8px;
+        }
+
+        .step {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+
+        .step-arrow {
+          font-size: 10px;
+        }
+
         .contact-item img {
           width: 120px;
           height: 120px;
+        }
+
+        .service-main {
+          padding: 16px;
+          gap: 12px;
+        }
+
+        .service-info h3 {
+          font-size: 15px;
+        }
+
+        .service-info p {
+          font-size: 13px;
+        }
+
+        .process-simple {
+          gap: 8px;
+        }
+
+        .step {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+
+        .step-arrow {
+          display: none;
         }
       }
 
@@ -1183,7 +1604,6 @@
             <a href="http://bitfree.cn" class="bitfree-nav-link">
               <i class="fas fa-rocket"></i> 
               <span>bitfree社区</span>
-              <span class="nav-highlight">推荐</span>
             </a>
           </li>
         </ul>
@@ -1278,13 +1698,16 @@
         });
 
         // 为"立即预约"按钮添加点击事件
-        const serviceButtons = document.querySelectorAll('.service-button');
+        const serviceButtons = document.querySelectorAll('.btn-secondary');
         serviceButtons.forEach(button => {
             button.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             // 移除弹窗逻辑，改为直接打开B站私信页面
             window.open('https://message.bilibili.com/#/whisper/mid1525355', '_blank');
           });
+        });
+        });
         });
 
         // 主题切换功能
