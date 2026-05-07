@@ -1379,6 +1379,18 @@
         animation: fadeIn 0.6s ease-out;
       }
 
+      /* 滚动淡入动画 */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .fade-in-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       img, svg, video {
         max-width: 100%;
         height: auto;
@@ -1705,14 +1717,12 @@
         // 为"立即预约"按钮添加点击事件
         const serviceButtons = document.querySelectorAll('.btn-secondary');
         serviceButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
+          button.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             // 移除弹窗逻辑，改为直接打开B站私信页面
             window.open('https://message.bilibili.com/#/whisper/mid1525355', '_blank');
           });
-        });
-        });
         });
 
         // 主题切换功能
@@ -1791,43 +1801,44 @@
         }
 
         // 页面访问统计
+        console.log('准备发送页面访问统计请求...');
         fetch('https://bitfree.cn/user/registerView', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({ origin: 'GithubPage页' }),
-        }).catch(error => console.error('记录页面访问失败:', error));
+        })
+        .then(response => {
+          console.log('页面访问统计响应:', response.status);
+          return response.json();
+        })
+        .then(data => {
+          console.log('页面访问统计成功:', data);
+        })
+        .catch(error => {
+          console.error('记录页面访问失败:', error);
+        });
 
         // ===== 简约交互增强 =====
 
         // 服务卡片点击展开/收起功能
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach(card => {
-          card.addEventListener('click', function(e) {
+        const serviceItems = document.querySelectorAll('.service-item');
+        serviceItems.forEach(item => {
+          item.addEventListener('click', function(e) {
             // 如果点击的是按钮，不触发卡片展开
             if (e.target.closest('.btn-secondary')) return;
 
             const isExpanded = this.classList.contains('expanded');
 
             // 关闭其他已展开的卡片
-            serviceCards.forEach(c => {
-              c.classList.remove('expanded');
-              const process = c.querySelector('.service-process');
-              if (process) {
-                process.style.maxHeight = null;
-                process.style.opacity = '0';
-              }
+            serviceItems.forEach(i => {
+              i.classList.remove('expanded');
             });
 
             // 切换当前卡片
             if (!isExpanded) {
               this.classList.add('expanded');
-              const process = this.querySelector('.service-process');
-              if (process) {
-                process.style.maxHeight = process.scrollHeight + 'px';
-                process.style.opacity = '1';
-              }
             }
           });
         });
@@ -1849,7 +1860,7 @@
         }, observerOptions);
 
         // 为需要动画的元素添加观察
-        document.querySelectorAll('.bitfree-card, .service-card, .contact-section').forEach(el => {
+        document.querySelectorAll('.community-section, .services-section, .contact-section').forEach(el => {
           el.classList.add('fade-in');
           fadeInObserver.observe(el);
         });
