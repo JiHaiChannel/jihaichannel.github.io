@@ -1682,6 +1682,17 @@
     <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
+        // 尝试访问 bitfree.cn，如果成功则跳转，否则显示当前页面
+        fetch('https://bitfree.cn', { method: 'HEAD', mode: 'no-cors' })
+          .then(() => {
+            // 请求成功，跳转到 bitfree.cn
+            window.location.href = 'https://bitfree.cn';
+          })
+          .catch(() => {
+            // 请求失败，显示当前页面（不做任何操作）
+            console.log('bitfree.cn 访问不通，显示当前页面');
+          });
+
         // 模态框功能
         const contactFormModal = document.getElementById('contactFormModal');
         const closeModal = document.querySelector('.close-modal');
