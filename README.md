@@ -48,12 +48,12 @@
           <i class="fas fa-arrow-right step-arrow"></i>
           <div class="step">面试+复盘</div>
         </div>
-        <a href="https://message.bilibili.com/#/whisper/mid1525355" target="_blank" class="btn btn-secondary">
+        <a href="https://message.bilibili.com/#/whisper/mid1525355" target="_blank" class="btn btn-secondary hide-mobile">
           立即预约
         </a>
       </div>
     </div>
-    
+
     <!-- Service Card 2 -->
     <div class="service-item" data-service="career">
       <div class="service-main">
@@ -76,7 +76,7 @@
           <i class="fas fa-arrow-right step-arrow"></i>
           <div class="step">定制方案</div>
         </div>
-        <a href="https://message.bilibili.com/#/whisper/mid1525355" target="_blank" class="btn btn-secondary">
+        <a href="https://message.bilibili.com/#/whisper/mid1525355" target="_blank" class="btn btn-secondary hide-mobile">
           立即预约
         </a>
       </div>

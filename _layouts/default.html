@@ -1547,6 +1547,11 @@
         .step-arrow {
           display: none;
         }
+
+        /* 移动端隐藏立即预约按钮 */
+        .hide-on-mobile {
+          display: none;
+        }
       }
 
       @media (min-width: 801px) {
@@ -1786,12 +1791,12 @@
         }
 
         // 页面访问统计
-        fetch('https://bitfree.cn/api/user/registerView', {
+        fetch('https://bitfree.cn/user/registerView', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ origin: 'githubPage' }),
+          body: JSON.stringify({ origin: 'GithubPage页' }),
         }).catch(error => console.error('记录页面访问失败:', error));
 
         // ===== 简约交互增强 =====
