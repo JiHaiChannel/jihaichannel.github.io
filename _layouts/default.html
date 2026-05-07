@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 {% seo %}
+    <style>
+      /* 初始隐藏页面内容，避免跳转前闪烁 */
+      html {
+        visibility: hidden;
+        opacity: 0;
+      }
+      /* 如果 bitfree.cn 访问失败，显示页面 */
+      html.show-content {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+    </style>
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1689,9 +1702,15 @@
             window.location.href = 'https://bitfree.cn';
           })
           .catch(() => {
-            // 请求失败，显示当前页面（不做任何操作）
+            // 请求失败，显示当前页面
+            document.documentElement.classList.add('show-content');
             console.log('bitfree.cn 访问不通，显示当前页面');
           });
+
+        // 设置超时，如果 3 秒内没有跳转，则显示当前页面
+        setTimeout(() => {
+          document.documentElement.classList.add('show-content');
+        }, 3000);
 
         // 模态框功能
         const contactFormModal = document.getElementById('contactFormModal');
